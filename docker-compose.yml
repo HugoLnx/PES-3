@@ -1,0 +1,18 @@
+version: '2'
+services:
+  web:
+    build: .
+    links:
+      - mongo:mongolocal
+      - redis:redislocal
+    depends_on:
+      - mongo
+      - redis
+    ports:
+      - "3005:80"
+    volumes:
+      - ".:/app"
+  mongo:
+    image: mongo:2.6.10
+  redis:
+    image: redis:3.0.3
