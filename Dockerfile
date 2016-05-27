@@ -98,6 +98,7 @@ RUN make install
 
 RUN luarocks install mongorover
 RUN luarocks install lua-resty-session
+RUN luarocks install lua-cjson
 
 # ***** CLEANUP *****
 RUN rm -rf /nginx-${VER_NGINX}
