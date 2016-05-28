@@ -16,3 +16,9 @@
 * Módulo de Upload para NGINX: https://www.nginx.com/resources/wiki/modules/upload/
 * Driver de mongo para lua: https://github.com/mongodb-labs/mongorover
 * Sessões para lua com nginx (Talvez a gente nem precise): https://github.com/bungle/lua-resty-session
+
+# Paths importantes
+* GET /articles.json - JSON com todos os artigos existentes
+* POST /articles - Cria um artigo fazendo upload do PDF (tem que enviar como 'multipart/form-data')
+* GET /form.html - Exemplo de formulário onde pode-se criar um artigo
+* GET /articles/$id.pdf - Baixa PDF contabilizando o número de downloads
