@@ -1,5 +1,6 @@
 local utils = require "utils"
 local ATTRIBUTES = {"id", "title", "authors", "downloads"}
+local path = require "pl.path"
 
 local function to_data(values)
   local data = {}
@@ -33,6 +34,10 @@ local M = {
 M.metatable = {
   data = function(self)
     return to_data(self)
+  end,
+  
+  document_path = function(self)
+    return path.join("documents", self.id .. ".pdf")
   end,
 }
 

@@ -1,8 +1,11 @@
 local Article = require "article"
 local utils = require "utils"
+local path = require "pl.path"
+local file = require "pl.file"
+local app = require "app"
 
 local M = {
-  new = function(self, connection)
+  new = function(self, connection, app)
     local dao = {connection = connection}
     setmetatable(dao, {__index = self.metatable})
     return dao
@@ -10,12 +13,15 @@ local M = {
 }
 
 M.metatable = {
-  insert = function(self, article)
-    if not article then error() end
+  insert = function(self, article, uploaded_document)
+    if not article or not uploaded_document then error() end
     local result = self:__collection():insert_one(article:data())
     if result.acknowledged then
       local data = utils.merge(article:data(), {id = result.inserted_id.key})
-      return Article:new(data)
+      local article = Article:new(data)
+      local abs_path = path.join(app.root, "public", article:document_path())
+      file.copy(uploaded_document.path, abs_path)
+      return article
     else
       return nil
     end

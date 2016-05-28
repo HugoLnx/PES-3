@@ -2,7 +2,7 @@ local ArticleDao = require('article_dao')
 local Article = require('article')
 
 local M = {
-  new = function(self, connection)
+  new = function(self, connection, app)
     local controller = {dao = ArticleDao:new(connection)}
     setmetatable(controller, {__index = self.metatable})
     return controller
@@ -21,7 +21,7 @@ M.metatable = {
 
   create = function(self, params)
     local article = Article:new(params)
-    article = self.dao:insert(article)
+    article = self.dao:insert(article, params.document)
     
     return {
       status = 201,

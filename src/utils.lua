@@ -23,4 +23,13 @@ M.map_iterator = function(iterator, func)
   return new_list
 end
 
+M.split = function(str, pattern)
+  -- função auxiliar que separa uma string usando pattern
+  local parts = {}
+  for part in str:gmatch(pattern) do
+    parts[#parts+1] = part
+  end
+  return parts
+end
+
 return M
