@@ -20,5 +20,8 @@
 # Paths importantes
 * GET /articles.json - JSON com todos os artigos existentes
 * POST /articles - Cria um artigo fazendo upload do PDF (tem que enviar como 'multipart/form-data')
-* GET /form.html - Exemplo de formulário onde pode-se criar um artigo
 * GET /articles/$id.pdf - Baixa PDF contabilizando o número de downloads
+* POST /articles/$id/update - Atualiza um artigo  (tem que enviar como 'multipart/form-data') PS.: Não usei PUT por que estava tendo problemas em habilitar upload pro PUT :P
+* DELETE /articles/$id - Deleta um artigo
+* GET /form.html - Exemplo de formulário onde pode-se criar um artigo
+* GET /update-form.html - Exemplo de formulário que atualiza o último artigo adicionado
