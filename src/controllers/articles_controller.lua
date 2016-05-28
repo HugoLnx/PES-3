@@ -1,6 +1,6 @@
-local ArticleDao = require('models/article_dao')
-local Article = require('models/article')
-local ArticleSerializer = require('models/article_serializer')
+local ArticleDao = require('article_dao')
+local Article = require('article')
+local ArticleSerializer = require('article_serializer')
 
 local M = {
   new = function(self, connection, app)
