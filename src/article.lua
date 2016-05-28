@@ -37,7 +37,7 @@ M.metatable = {
   end,
   
   document_path = function(self)
-    return path.join("documents", self.id .. ".pdf")
+    return path.join("articles", self.id .. ".pdf")
   end,
 }
 

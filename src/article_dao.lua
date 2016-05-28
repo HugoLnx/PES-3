@@ -2,7 +2,9 @@ local Article = require "article"
 local utils = require "utils"
 local path = require "pl.path"
 local file = require "pl.file"
+local plutils = require "pl.utils"
 local app = require "app"
+local ObjectId = require("mongorover.luaBSONObjects").ObjectId
 
 local M = {
   new = function(self, connection, app)
@@ -19,8 +21,7 @@ M.metatable = {
     if result.acknowledged then
       local data = utils.merge(article:data(), {id = result.inserted_id.key})
       local article = Article:new(data)
-      local abs_path = path.join(app.root, "public", article:document_path())
-      file.copy(uploaded_document.path, abs_path)
+      file.copy(uploaded_document.path, self:__document_abs_path(article))
       return article
     else
       return nil
@@ -32,7 +33,14 @@ M.metatable = {
   end,
 
   find = function(self, id)
-    return Article:new(self:__find_all({_id = id})[1])
+    return Article:new(self:__find_all({_id = ObjectId.new(id)})[1])
+  end,
+
+  download = function(self, id)
+    self:__collection():update_one({_id = ObjectId.new(id)}, {["$inc"] = {downloads = 1}})
+    local article = self:find(id)
+    local file = plutils.readfile(self:__document_abs_path(article), true)
+    return article, file
   end,
   
   __collection = function(self)
@@ -47,6 +55,10 @@ M.metatable = {
       article_data._id = nil
       return article_data
     end)
+  end,
+  
+  __document_abs_path = function(self, article)
+    return path.join(app.root, "documents", article.id .. ".pdf")
   end
 }
 

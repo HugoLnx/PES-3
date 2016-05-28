@@ -32,6 +32,19 @@ M.metatable = {
     }
   end,
 
+  download = function(self, params)
+    local article, file = self.dao:download(params.id)
+    
+    return {
+      status = 200,
+      body = file,
+      headers = {
+        ["Content-Type"] = "application/octet-stream",
+        ["Content-Disposition"] = "attachment;filename='"..article.title..".pdf'",
+      },
+    }
+  end,
+
   update = function(self)
   end,
 

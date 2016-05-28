@@ -17,7 +17,8 @@ M.metatable = {
     local ngx = self.ngx
     local controller = require(calling.controller .. "_controller"):new(self.connection)
     local action = calling.action
-    local args = self:__get_args() 
+    local path_args = calling.path_args
+    local args = self:__get_args(path_args) 
     
     local output = controller[action](controller, args) 
     local headers = utils.merge(DEFAULT_HEADERS, (output.headers or {}))
@@ -29,7 +30,8 @@ M.metatable = {
     ngx.exit(output.status or ngx.HTTP_OK)
   end,
   
-  __get_args = function(self)
+  __get_args = function(self, path_args)
+    local path_args = path_args or {}
     local args = {}
     local add_arg = function(key, value)
       local parts = utils.split(key, "[^.]+")
@@ -42,6 +44,9 @@ M.metatable = {
         args[attr] = args[attr] or {}
         args[attr][inx] = value
       end
+    end
+    for k,v in pairs(path_args) do
+      add_arg(k, v)
     end
     self.ngx.req.read_body()
     for k,v in pairs(self.ngx.req.get_uri_args()) do
