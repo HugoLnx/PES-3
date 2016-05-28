@@ -21,7 +21,7 @@ M.metatable = {
     if result.acknowledged then
       local data = utils.merge(article:data(), {id = result.inserted_id.key})
       local article = Article:new(data)
-      file.copy(uploaded_document.path, self:__document_abs_path(article))
+      self:__move_uploaded_document(uploaded_document, article)
       return article
     else
       return nil
@@ -35,17 +35,30 @@ M.metatable = {
   find = function(self, id)
     return Article:new(self:__find_all({_id = ObjectId.new(id)})[1])
   end,
+  
+  delete = function(self, id)
+    return self:__collection():delete_one({_id = ObjectId.new(id)}).acknowledged
+  end,
+  
+  update = function(self, article, uploaded_document)
+    local data = article:data()
+    data.id = nil
+    local result = self:__collection():update_one({_id = ObjectId.new(article.id)}, {["$set"] = data})
+    
+    if result.raw_result.nMatched > 0 then
+      local article = self:find(article.id)
+      self:__move_uploaded_document(uploaded_document, article)
+      return article
+    else
+      return nil
+    end
+  end,
 
   download = function(self, id)
     self:__collection():update_one({_id = ObjectId.new(id)}, {["$inc"] = {downloads = 1}})
     local article = self:find(id)
     local file = plutils.readfile(self:__document_abs_path(article), true)
     return article, file
-  end,
-  
-  __collection = function(self)
-    local database = self.connection:getDatabase("pes3")
-    return database:getCollection("articles")
   end,
   
   __find_all = function(self, query)
@@ -57,9 +70,21 @@ M.metatable = {
     end)
   end,
   
+  __move_uploaded_document = function(self, uploaded_document, article)
+    if not uploaded_document then return end
+    local destination_path = self:__document_abs_path(article)
+    file.delete(destination_path)
+    file.move(uploaded_document.path, destination_path)
+  end,
+  
   __document_abs_path = function(self, article)
     return path.join(app.root, "documents", article.id .. ".pdf")
-  end
+  end,
+  
+  __collection = function(self)
+    local database = self.connection:getDatabase("pes3")
+    return database:getCollection("articles")
+  end,
 }
 
 return M

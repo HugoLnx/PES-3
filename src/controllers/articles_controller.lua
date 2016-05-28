@@ -35,20 +35,59 @@ M.metatable = {
   download = function(self, params)
     local article, file = self.dao:download(params.id)
     
-    return {
-      status = 200,
-      body = file,
-      headers = {
-        ["Content-Type"] = "application/octet-stream",
-        ["Content-Disposition"] = "attachment;filename='"..article.title..".pdf'",
-      },
-    }
+    if article then
+      return {
+        status = 200,
+        body = file,
+        headers = {
+          ["Content-Type"] = "application/octet-stream",
+          ["Content-Disposition"] = "attachment;filename='"..article.title..".pdf'",
+        },
+      }
+    else
+      return {
+        status = 404,
+        body = '{"error" : "Not found"}',
+        headers = {
+          ["Content-Type"] = "application/json",
+        },
+      }
+    end
   end,
 
-  update = function(self)
+  update = function(self, params)
+    local article = self.dao:update(Article:new(params), params.document)
+    if article then
+      return {
+        status = 200,
+        body = ArticleSerializer:serialize_one(article),
+        headers = {
+          ["Content-Type"] = "application/json",
+        },
+      }
+    else
+      return {
+        status = 404,
+        body = '{"error" : "Not found"}',
+        headers = {
+          ["Content-Type"] = "application/json",
+        },
+      }
+    end
   end,
 
-  destroy = function(self)
+  destroy = function(self, params)
+    if self.dao:delete(params.id) then
+      return { status = 204, }
+    else
+      return {
+        status = 404,
+        body = '{"error" : "Not found"}',
+        headers = {
+          ["Content-Type"] = "application/json",
+        },
+      }
+    end
   end,
 
   show = function(self)

@@ -27,7 +27,7 @@ M.metatable = {
       ngx.header[header] = value
     end
     ngx.say(output.body)
-    ngx.exit(output.status or ngx.HTTP_OK)
+    ngx.exit(output.status or 500)
   end,
   
   __get_args = function(self, path_args)
