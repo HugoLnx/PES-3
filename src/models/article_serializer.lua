@@ -1,4 +1,4 @@
-local Article = require "article"
+local Article = require "models/article"
 local utils = require "utils"
 local cjson = require "cjson"
 

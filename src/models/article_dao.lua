@@ -1,9 +1,9 @@
-local Article = require "article"
+local Article = require "models/article"
 local utils = require "utils"
+local app = require "app"
 local path = require "pl.path"
 local file = require "pl.file"
 local plutils = require "pl.utils"
-local app = require "app"
 local ObjectId = require("mongorover.luaBSONObjects").ObjectId
 
 local M = {
