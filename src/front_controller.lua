@@ -4,14 +4,6 @@ local multipart = require "multipart"
 
 local DEFAULT_HEADERS = { ["Content-Type"] = "application/json" }
 
-local function tojson(json)
-  if json.collection ~= nil and #json.collection == 0 then
-    json.collection = ":_:collection:_:"
-  end
-  local json_str, _ = cjson.encode(json):gsub('":_:collection:_:"', "[]")
-  return json_str
-end
-
 local M = {
   new = function(self, ngx, connection)
     local controller = {connection = connection, ngx = ngx}
@@ -33,7 +25,7 @@ M.metatable = {
     for header,value in pairs(headers) do
       ngx.header[header] = value
     end
-    ngx.say(tojson(output.json))
+    ngx.say(output.body)
     ngx.exit(output.status or ngx.HTTP_OK)
   end,
   

@@ -1,5 +1,6 @@
 local ArticleDao = require('article_dao')
 local Article = require('article')
+local ArticleSerializer = require('article_serializer')
 
 local M = {
   new = function(self, connection, app)
@@ -11,11 +12,12 @@ local M = {
 
 M.metatable = {
   index = function(self, params)
-    local articles = Article:data_of_all(self.dao:all())
+    local articles = self.dao:all()
     
     return {
       status = 200,
-      json = { collection = articles },
+      body = ArticleSerializer:serialize_many(articles),
+      headers = { ["Content-Type"] = "application/json" },
     }
   end,
 
@@ -25,7 +27,8 @@ M.metatable = {
     
     return {
       status = 201,
-      json = article:data(),
+      body = ArticleSerializer:serialize_one(article),
+      headers = { ["Content-Type"] = "application/json" },
     }
   end,
 
