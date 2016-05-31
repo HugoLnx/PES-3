@@ -16,6 +16,7 @@
 * Módulo de Upload para NGINX: https://www.nginx.com/resources/wiki/modules/upload/
 * Driver de mongo para lua: https://github.com/mongodb-labs/mongorover
 * Sessões para lua com nginx (Talvez a gente nem precise): https://github.com/bungle/lua-resty-session
+* Academic Search Engine Optimization: https://docear.org/papers/Academic%20Search%20Engine%20Optimization%20(ASEO)%20--%20preprint.pdf
 
 # Paths importantes
 * GET /articles.json - JSON com todos os artigos existentes
@@ -25,3 +26,4 @@
 * DELETE /articles/$id - Deleta um artigo
 * GET /form.html - Exemplo de formulário onde pode-se criar um artigo
 * GET /update-form.html - Exemplo de formulário que atualiza o último artigo adicionado
+
