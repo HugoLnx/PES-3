@@ -1,0 +1,59 @@
+* {
+  color: #444;
+}
+
+.pagination {
+  margin: 0;
+}
+
+.link-unstyled, .link-unstyled:link, .link-unstyled:hover, .link-unstyled:focus, .link-unstyled:active, .link-unstyled:visited {
+  color: inherit;
+  text-decoration: inherit;
+}
+
+/* Artigos
+ ****************/
+
+.artigo-titulo, .artigo-titulo:hover, .artigo-titulo:active, .artigo-titulo:focus {
+  color: #1a0dab;
+  display: block;
+  font-size: 1.1em;
+}
+
+.artigo-titulo:visited {
+  color: #660099;
+}
+
+.artigo-autores, .more-link {
+  font-size: 0.9em;
+  color: #006621;
+}
+
+.more-link:hover {
+  text-decoration: underline;
+  cursor: pointer;
+}
+
+.artigo-abstract {
+  color: #444;
+  margin-bottom: 5px;
+}
+
+.more-content {
+  display: none;
+}
+
+.artigo-stats {
+  font-size: 0.9em;
+}
+
+ul.artigo-stats {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+ul.artigo-stats li {
+  display: inline;
+  margin-right: 12px;
+}

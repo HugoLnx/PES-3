@@ -1,0 +1,156 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
+
+  <meta name="description" content="">
+  <meta name="author" content="">
+  <link rel="icon" href="/favicon.ico">
+
+  <title>PES 3</title>
+
+  <link rel="stylesheet" href="/css/bootstrap.min.css">
+  <link rel="stylesheet" href="/css/style.css">
+
+
+  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
+  <!--[if lt IE 9]>
+  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
+  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
+  <![endif]-->
+</head>
+
+<body>
+
+<div class="container">
+  <h1>Listagem de Artigos</h1>
+  <br>
+
+  <p>Pesquise por título, nome dos autores, conferência, e abstract</p>
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Termos da Pesquisa">
+    <span class="input-group-btn">
+      <button class="btn btn-info" type="button">
+        Pesquisar
+      </button>
+    </span>
+  </div>
+
+  <hr>
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <a href="/123" class="artigo-titulo">A Collaborative Approach to Capture the Domain Language</a>
+      <span class="artigo-autores">2015 &mdash; WER15 &mdash; Leandro Antonelli, Gustavo Rossi, Alejandro Oliveros</span>
+      <p class="artigo-abstract">
+        Software development is a succession of descriptions in different languages where a previous description is necessary for the next one. Thus, it is important to begin software development with requirements that are as correct and as complete as possible. Although some literature holds the belief that correctness and completeness are two attributes that requirements specifications must satisfy, we know that these attributes are very difficult to meet. However, we have to find ways to diminish the level of incompleteness and deal with the possible conflicts that do arise in the requirements context. Defining the domain language before specifying the requirements is a way of coping with this problem. Nevertheless, it is hard to produce a domain language specification when there are many stakeholders involved. We rely on collaboration in order to foster the cooperation of the stakeholders, thus they are able to explore the differences constructively and search for solutions that go beyond their own limited views. In this paper, we propose a strategy to capture the domain language in a collaborative way using Language Extended Lexicon and we show a preliminary validation of the proposed strategy
+      </p>
+      <ul class="artigo-stats">
+        <li>Downloads: 25</li>
+        <li>Citado por: 2</li>
+        <li><a href="">[Scholar]</a></li>
+        <li class="link-gerenciar"><a href="">Gerenciar</a></li>
+      </ul>
+    </div>
+  </div>
+
+
+  <div class="panel panel-default">
+    <div class="panel-body">
+      <a href="/123" class="artigo-titulo">Extração de requisitos apoiada por técnicas de Inteligência Artificial embutidas em ferramentas de apoio</a>
+      <span class="artigo-autores">2015 &mdash; WER15 &mdash; Cristiane Aparecida Lana, Lucas Gonçalves Cunha, José Luis Braga, Antônio de Pádua Albuquerque Oliveira.</span>
+      <p class="artigo-abstract">
+        A linguagem peculiar e a pluralidade de visões distintas exigem conhecimento e experiência do engenheiro de requisitos para o sucesso da atividade de extração de requisitos em domínios específicos. Neste trabalho, são apresentadas as ferramentas i*Get e TEKBS, que utilizam técnicas de inteligência artificial para auxiliarem o engenheiro de requisitos na extração de metas concretas e flexíveis, no contexto de iStar. A i*Get utiliza as “ações concretas” definidas no LAL enquanto a TEKBS as “ações flexíveis” combinadas com os sinônimos dos termos que representam essas ações, obtidos a partir do Wordnet. Os resultados são transformados em base de fatos da ferramenta CLIPS, e então processados usando uma base de regras de análise disparadas pela máquina de inferência do CLIPS. Resultados preliminares mostram que um número maior de requisitos são extraídos pelo engenheiro, melhorando o conhecimento sobre o domínio.      </p>
+      <ul class="artigo-stats">
+        <li>Downloads: 724</li>
+        <li>Citado por: 42</li>
+        <li><a href="">[Scholar]</a></li>
+        <li class="link-gerenciar"><a href="">Gerenciar</a></li>
+      </ul>
+    </div>
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4 text-center">
+      <nav>
+        <ul class="pagination">
+          <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+          <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col-sm-4">
+      <a href="" class="btn btn-success pull-right"  data-toggle="modal" data-target="#myModal">
+        Adicionar Artigo
+      </a>
+    </div>
+  </div>
+
+  <hr>
+
+  <footer>
+    <p>&copy; 2016 PUC-Rio</p>
+  </footer>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Adicionar Artigo</h4>
+      </div>
+      <div class="modal-body">
+
+        <form action="/articles" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="exampleInputFile">PDF do Artigo</label>
+            <input type="file" id="exampleInputFile" name="documento">
+            <p class="help-block">O sistema vai prepopular os campos automaticamente a partir do PDF do Artigo.</p>
+          </div>
+
+          <div class="form-group">
+            <label for="input-titulo">Título</label>
+            <input type="text" class="form-control" id="input-titulo">
+          </div>
+
+          <div class="form-group">
+            <label for="input-autores">Autores</label>
+            <input type="text" class="form-control" id="input-autores">
+          </div>
+
+          <div class="form-group">
+            <label for="input-conferencia">Conferência</label>
+            <input type="text" class="form-control" id="input-conferencia">
+          </div>
+
+          <div class="form-group">
+            <label for="input-abstract">Abstract</label>
+            <textarea class="form-control" id="input-abstract"></textarea>
+          </div>
+
+          <input type="submit" id="input-submit" class="hidden">
+        </form>
+
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+        <button type="button" class="btn btn-primary">Enviar</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<script src="/js/jquery.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>
+<script src="/js/script.js"></script>
+</body>
+</html>
