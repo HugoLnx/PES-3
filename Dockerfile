@@ -96,12 +96,15 @@ RUN ./configure
 RUN make
 RUN make install
 
+# ***** PROJECT DEPENDENCIES *****
 RUN luarocks install mongorover
 RUN luarocks install lua-resty-session
 RUN luarocks install lua-cjson
 RUN luarocks install multipart
 RUN luarocks install luafilesystem
 RUN luarocks install penlight
+
+RUN apt-get -qq -y install poppler-utils
 
 # ***** CLEANUP *****
 RUN rm -rf /nginx-${VER_NGINX}

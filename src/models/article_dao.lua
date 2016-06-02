@@ -21,7 +21,8 @@ M.metatable = {
     if result.acknowledged then
       local data = utils.merge(article:data(), {id = result.inserted_id.key})
       local article = Article:new(data)
-      self:__move_uploaded_document(uploaded_document, article)
+      local text = self:__move_uploaded_document(uploaded_document, article)
+      article.document_text =  text
       return article
     else
       return nil
@@ -75,6 +76,14 @@ M.metatable = {
     local destination_path = self:__document_abs_path(article)
     file.delete(destination_path)
     file.move(uploaded_document.path, destination_path)
+    return self:__get_text_from_pdf(destination_path)
+  end,
+  
+  __get_text_from_pdf = function(self, path)
+    local handle = io.popen("pdftotext '" .. path .. "' '-'")
+    local content = handle:read("*a")
+    handle:close()
+    return content
   end,
   
   __document_abs_path = function(self, article)
