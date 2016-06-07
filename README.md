@@ -47,6 +47,9 @@
 ### 06/06
 * Criada a pasta diagrams e esboçar o diagrama de arquitetura (Lucas)
 
+### 07/06
+* Correções no diagrama de arquitetura nível 0 (Lucas)
+
 ## TODO list
 
 ### Backend
