@@ -44,6 +44,9 @@
 * Segunda apresentação. (Guilherme e Bernardo)
 * Criação do livro diário e TODO list para organização das tarefas. (Bernardo)
 
+### 06/06
+* Criada a pasta diagrams e esboçar o diagrama de arquitetura (Lucas)
+
 ## TODO list
 
 ### Backend
