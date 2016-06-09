@@ -1,7 +1,7 @@
 local utils = require "utils"
 local path = require "pl.path"
 
-local ATTRIBUTES = {"id", "title", "authors", "downloads", "document_text"}
+local ATTRIBUTES = {"id", "title", "abstract", "authors", "downloads", "quoting_rate", "document_text", "creation_date"}
 
 local function to_data(values)
   local data = {}
@@ -15,6 +15,8 @@ local M = {
   new = function(self, values)
     local article = to_data(values)
     article.downloads = article.downloads or 0
+    article.quoting_rate = article.quoting_rate or 0
+    article.creation_date = article.creation_date or os.date()
     setmetatable(article, {__index = self.metatable})
     return article
   end,

@@ -34,16 +34,3 @@ $(document).ready(function() {
     return false;
   });
 });
-
-// Render articles
-(function() {
-  function load_template(id) {
-    return Handlebars.compile(document.getElementById(id).innerHTML);
-  };
-  
-  var render_articles = load_template("articles-template");
-  $.get("/articles.json", function(articles) {
-    var html = render_articles(articles);
-    document.getElementsByClassName("articles-list")[0].innerHTML = html;
-  });
-}());

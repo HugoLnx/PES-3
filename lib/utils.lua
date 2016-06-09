@@ -1,10 +1,16 @@
 M = {}
 
-M.merge = function(table1, table2)
+M.merge = function(...)
   local table = {}
-  for k,v in pairs(table1) do table[k] = v end
-  for k,v in pairs(table2) do table[k] = v end
+  for i, t in ipairs{...} do
+    for k,v in pairs(t) do table[k] = v end
+  end
   return table
+end
+
+M.copy_to = function(origin, destiny)
+  for k,v in pairs(origin) do destiny[k] = v end
+  return destiny
 end
 
 M.map = function(list, func)

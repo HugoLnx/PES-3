@@ -21,13 +21,11 @@ M.metatable = {
     local args = self:__get_args(path_args) 
     
     local output = controller[action](controller, args) 
-    local headers = utils.merge(DEFAULT_HEADERS, (output.headers or {}))
-    
-    for header,value in pairs(headers) do
-      ngx.header[header] = value
+    if output.redirect_to then
+      self:__respond_redirect(output.redirect_to)
+    else
+      self:__respond_with(output)
     end
-    ngx.say(output.body)
-    ngx.exit(output.status or 500)
   end,
   
   __get_args = function(self, path_args)
@@ -57,7 +55,21 @@ M.metatable = {
       add_arg(k, v)
     end
     return args
-  end
+  end,
+  
+  __respond_redirect = function(self, path)
+    ngx.redirect(path)
+  end,
+  
+  __respond_with = function(self, output)
+    local headers = utils.merge(DEFAULT_HEADERS, (output.headers or {}))
+    
+    for header,value in pairs(headers) do
+      ngx.header[header] = value
+    end
+    ngx.say(output.body)
+    ngx.exit(output.status or 500)
+  end,
 }
 
 return M

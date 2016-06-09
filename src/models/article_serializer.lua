@@ -1,25 +1,21 @@
 local Article = require "models/article"
 local utils = require "utils"
-local cjson = require "cjson"
 
 local function data_for(article)
-  return utils.merge(article:data(), {download_path = article:document_path()})
+  return utils.merge(article:data(), {
+    download_path = article:document_path(),
+    authors = table.concat(article.authors, ", "),
+    view_path = "/articles/" .. article.id .. ".html",
+  })
 end
 
 return {
   serialize_one = function(self, article)
-    local data = data_for(article)
-    return cjson.encode({article = data})
+    return data_for(article)
   end,
   
   serialize_many = function(self, articles)
-    local json = {}
-    if #articles == 0 then
-      return '{"articles":[]}'
-    else
-      local data = utils.map(articles, function(article) return data_for(article) end)
-      return cjson.encode({articles = data})
-    end
+    return utils.map(articles, function(article) return data_for(article) end)
   end,
 }
 

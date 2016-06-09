@@ -1,0 +1,15 @@
+<div class="panel panel-default">
+  <div class="panel-body">
+    <a href="{{article.view_path}}" class="artigo-titulo">{{article.title}}</a>
+    <span class="artigo-autores">{{article.authors}}</span>
+    <p class="artigo-abstract" data-limit="200">
+      {{article.abstract}}
+    </p>
+    <ul class="artigo-stats">
+      <li>Downloads: {{article.downloads}}</li>
+      <li>Citado por: {{article.quoting_rate}}</li>
+      <li><a href="{{article.scholar_link}}">[Scholar]</a></li>
+      <li class="link-download"><a href="{{article.download_path}}">Download</a></li>
+    </ul>
+  </div>
+</div>

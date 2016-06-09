@@ -34,17 +34,23 @@ M.metatable = {
   end,
 
   find = function(self, id)
-    return Article:new(self:__find_all({_id = ObjectId.new(id)})[1])
+    local id = self:__safe_object_id(id)
+    if not id then return nil end
+    return Article:new(self:__find_all({_id = id})[1])
   end,
   
   delete = function(self, id)
-    return self:__collection():delete_one({_id = ObjectId.new(id)}).acknowledged
+    local id = self:__safe_object_id(id)
+    if not id then return nil end
+    return self:__collection():delete_one({_id = id}).acknowledged
   end,
   
   update = function(self, article, uploaded_document)
     local data = article:data()
     data.id = nil
-    local result = self:__collection():update_one({_id = ObjectId.new(article.id)}, {["$set"] = data})
+    local id = self:__safe_object_id(article.id)
+    if not id then return nil end
+    local result = self:__collection():update_one({_id = id}, {["$set"] = data})
     
     if result.raw_result.nMatched > 0 then
       local article = self:find(article.id)
@@ -56,7 +62,9 @@ M.metatable = {
   end,
 
   download = function(self, id)
-    self:__collection():update_one({_id = ObjectId.new(id)}, {["$inc"] = {downloads = 1}})
+    local id = self:__safe_object_id(id)
+    if not id then return nil end
+    self:__collection():update_one({_id = id}, {["$inc"] = {downloads = 1}})
     local article = self:find(id)
     local file = plutils.readfile(self:__document_abs_path(article), true)
     return article, file
@@ -93,6 +101,11 @@ M.metatable = {
   __collection = function(self)
     local database = self.connection:getDatabase("pes3")
     return database:getCollection("articles")
+  end,
+  
+  __safe_object_id = function(self, id)
+    local ok, ret_or_err = pcall(ObjectId.new, id)
+    if ok then return ret_or_err else return nil end
   end,
 }
 

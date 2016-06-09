@@ -1,50 +1,3 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="utf-8">
-  <meta http-equiv="X-UA-Compatible" content="IE=edge">
-  <meta name="viewport" content="width=device-width, initial-scale=1">
-  <!-- The above 3 meta tags *must* come first in the head; any other head content must come *after* these tags -->
-
-  <meta name="description" content="">
-  <meta name="author" content="">
-  <link rel="icon" href="/favicon.ico">
-
-  <title>PES 3</title>
-
-  <link href="/css/bootstrap.min.css" rel="stylesheet">
-  <link href="/css/style.css" rel="stylesheet">
-  
-  <script id="articles-template" type="text/x-handlebars-template">
-    {{#each articles}}
-      <div class="col-md-4">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <a href="{{view_reference}}" class="artigo-titulo">{{title}}</a>
-            <span class="artigo-autores">{{authors}}</span>
-            <p class="artigo-abstract" data-limit="200">{{abstract}}</p>
-            <ul class="artigo-stats">
-              <li>Downloads: {{downloads}}</li>
-              <li>Citado por: {{quoting_rate}}</li>
-              <li><a href="{{scholar_reference}}">[Scholar]</a></li>
-              <li class="link-gerenciar"><a href="{{download_path}}" target="_blank">Download</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-    {{/each}}
-  </script>
-
-
-  <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
-  <!--[if lt IE 9]>
-  <script src="https://oss.maxcdn.com/html5shiv/3.7.2/html5shiv.min.js"></script>
-  <script src="https://oss.maxcdn.com/respond/1.4.2/respond.min.js"></script>
-  <![endif]-->
-</head>
-
-<body>
-
 <div class="jumbotron">
   <div class="container">
     <h1>Diretório de Artigos</h1>
@@ -55,7 +8,7 @@
     </p>
     <div class="row">
       <div class="col-sm-4">
-        <p><a class="btn btn-primary btn-lg" href="/artigos.html">Ver todos os Artigos &raquo;</a></p>
+        <p><a class="btn btn-primary btn-lg" href="/articles.html">Ver todos os Artigos &raquo;</a></p>
       </div>
       <div class="col-sm-8">
         <div class="input-group input-lg">
@@ -145,10 +98,31 @@
 
   <h2>
     Artigos Recentes
-    <small class="pull-right"><a href="#" class="text-muted">Ver todos</a></small>
+    <small class="pull-right"><a href="/articles.html" class="text-muted">Ver todos</a></small>
   </h2>
 
-  <div class="row articles-list"></div>
+  <div class="row">
+    {% for _, article in ipairs(articles) do %}
+    <div class="col-md-4">
+      <div class="panel panel-default">
+        <div class="panel-body">
+          <a href="{{article.view_path}}" class="artigo-titulo">{{article.title}}</a>
+          <span class="artigo-autores">{{article.authors}}</span>
+          <p class="artigo-abstract" data-limit="200">
+            {{article.abstract}}
+          </p>
+          <ul class="artigo-stats">
+            <li>Downloads: {{article.downloads}}</li>
+            <li>Citado por: {{article.quoting_rate}}</li>
+            <li><a href="{{article.scholar_link}}">[Scholar]</a></li>
+            <li class="link-download"><a target="_blank" href="{{article.download_path}}">Download</a></li>
+          </ul>
+        </div>
+      </div>
+    </div>
+    {% end %}
+  </div>
+
 
   <hr>
 
@@ -160,7 +134,3 @@
 
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
-<script src="/js/script.js"></script>
-</body>
-</html>
