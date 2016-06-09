@@ -14,6 +14,26 @@
 
   <link href="/css/bootstrap.min.css" rel="stylesheet">
   <link href="/css/style.css" rel="stylesheet">
+  
+  <script id="articles-template" type="text/x-handlebars-template">
+    {{#each articles}}
+      <div class="col-md-4">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <a href="{{view_reference}}" class="artigo-titulo">{{title}}</a>
+            <span class="artigo-autores">{{authors}}</span>
+            <p class="artigo-abstract" data-limit="200">{{abstract}}</p>
+            <ul class="artigo-stats">
+              <li>Downloads: {{downloads}}</li>
+              <li>Citado por: {{quoting_rate}}</li>
+              <li><a href="{{scholar_reference}}">[Scholar]</a></li>
+              <li class="link-gerenciar"><a href="{{download_path}}" target="_blank">Download</a></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    {{/each}}
+  </script>
 
 
   <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
@@ -128,61 +148,7 @@
     <small class="pull-right"><a href="#" class="text-muted">Ver todos</a></small>
   </h2>
 
-  <div class="row">
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <a href="/123" class="artigo-titulo">A Collaborative Approach to Capture the Domain Language</a>
-          <span class="artigo-autores">2015 &mdash; WER15 &mdash; Leandro Antonelli, Gustavo Rossi, Alejandro Oliveros</span>
-          <p class="artigo-abstract" data-limit="200">
-            Software development is a succession of descriptions in different languages where a previous description is necessary for the next one. Thus, it is important to begin software development with requirements that are as correct and as complete as possible. Although some literature holds the belief that correctness and completeness are two attributes that requirements specifications must satisfy, we know that these attributes are very difficult to meet. However, we have to find ways to diminish the level of incompleteness and deal with the possible conflicts that do arise in the requirements context. Defining the domain language before specifying the requirements is a way of coping with this problem. Nevertheless, it is hard to produce a domain language specification when there are many stakeholders involved. We rely on collaboration in order to foster the cooperation of the stakeholders, thus they are able to explore the differences constructively and search for solutions that go beyond their own limited views. In this paper, we propose a strategy to capture the domain language in a collaborative way using Language Extended Lexicon and we show a preliminary validation of the proposed strategy
-          </p>
-          <ul class="artigo-stats">
-            <li>Downloads: 25</li>
-            <li>Citado por: 2</li>
-            <li><a href="">[Scholar]</a></li>
-            <li class="link-gerenciar"><a href="">Gerenciar</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <a href="/123" class="artigo-titulo">A Collaborative Approach to Capture the Domain Language</a>
-          <span class="artigo-autores">2015 &mdash; WER15 &mdash; Leandro Antonelli, Gustavo Rossi, Alejandro Oliveros</span>
-          <p class="artigo-abstract" data-limit="200">
-            Software development is a succession of descriptions in different languages where a previous description is necessary for the next one. Thus, it is important to begin software development with requirements that are as correct and as complete as possible. Although some literature holds the belief that correctness and completeness are two attributes that requirements specifications must satisfy, we know that these attributes are very difficult to meet. However, we have to find ways to diminish the level of incompleteness and deal with the possible conflicts that do arise in the requirements context. Defining the domain language before specifying the requirements is a way of coping with this problem. Nevertheless, it is hard to produce a domain language specification when there are many stakeholders involved. We rely on collaboration in order to foster the cooperation of the stakeholders, thus they are able to explore the differences constructively and search for solutions that go beyond their own limited views. In this paper, we propose a strategy to capture the domain language in a collaborative way using Language Extended Lexicon and we show a preliminary validation of the proposed strategy
-          </p>
-          <ul class="artigo-stats">
-            <li>Downloads: 25</li>
-            <li>Citado por: 2</li>
-            <li><a href="">[Scholar]</a></li>
-            <li class="link-gerenciar"><a href="">Gerenciar</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-    <div class="col-md-4">
-      <div class="panel panel-default">
-        <div class="panel-body">
-          <a href="/123" class="artigo-titulo">A Collaborative Approach to Capture the Domain Language</a>
-          <span class="artigo-autores">2015 &mdash; WER15 &mdash; Leandro Antonelli, Gustavo Rossi, Alejandro Oliveros</span>
-          <p class="artigo-abstract" data-limit="200">
-            Software development is a succession of descriptions in different languages where a previous description is necessary for the next one. Thus, it is important to begin software development with requirements that are as correct and as complete as possible. Although some literature holds the belief that correctness and completeness are two attributes that requirements specifications must satisfy, we know that these attributes are very difficult to meet. However, we have to find ways to diminish the level of incompleteness and deal with the possible conflicts that do arise in the requirements context. Defining the domain language before specifying the requirements is a way of coping with this problem. Nevertheless, it is hard to produce a domain language specification when there are many stakeholders involved. We rely on collaboration in order to foster the cooperation of the stakeholders, thus they are able to explore the differences constructively and search for solutions that go beyond their own limited views. In this paper, we propose a strategy to capture the domain language in a collaborative way using Language Extended Lexicon and we show a preliminary validation of the proposed strategy
-          </p>
-          <ul class="artigo-stats">
-            <li>Downloads: 25</li>
-            <li>Citado por: 2</li>
-            <li><a href="">[Scholar]</a></li>
-            <li class="link-gerenciar"><a href="">Gerenciar</a></li>
-          </ul>
-        </div>
-      </div>
-    </div>
-  </div>
-
+  <div class="row articles-list"></div>
 
   <hr>
 
@@ -194,6 +160,7 @@
 
 <script src="/js/jquery.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/handlebars.js/4.0.5/handlebars.min.js"></script>
 <script src="/js/script.js"></script>
 </body>
 </html>
