@@ -6,6 +6,7 @@
 3. entre no diretório do projeto
 4. rode no terminal: docker-compose build
 5. rode no terminal: docker-compose up
+5. rode em outro terminal: ./scripts/create_indexes.sh (Se não rodar não vai conseguir buscar artigos)
 6. teste acessando: http://localhost:3005/ ou http://localhost:3005/hellolua/
 
 ## Fontes úteis sobre o que estamos usando
@@ -18,13 +19,15 @@
 * [Videos explicando a estrutura do projeto](https://drive.google.com/folderview?id=0B1IQXiIP0vpWOVdrNWtpRDR5ZjQ&usp=sharing)
 
 ## Paths importantes
-* GET /articles.json - JSON com todos os artigos existentes
-* POST /articles - Cria um artigo fazendo upload do PDF (tem que enviar como 'multipart/form-data')
-* GET /articles/$id.pdf - Baixa PDF contabilizando o número de downloads
-* POST /articles/$id/update - Atualiza um artigo  (tem que enviar como 'multipart/form-data') PS.: Não usei PUT por que estava tendo problemas em habilitar upload pro PUT :P
-* DELETE /articles/$id - Deleta um artigo
+* GET /
+* GET /articles.html
+
 * GET /form.html - Exemplo de formulário onde pode-se criar um artigo
 * GET /update-form.html - Exemplo de formulário que atualiza o último artigo adicionado
+
+* POST /articles - Cria um artigo fazendo upload do PDF (tem que enviar como 'multipart/form-data')
+* POST /articles/$id/update - Atualiza um artigo  (tem que enviar como 'multipart/form-data') PS.: Não usei PUT por que estava tendo problemas em habilitar upload pro PUT :P
+* GET /articles/$id.pdf - Baixa PDF contabilizando o número de downloads
 
 ## Livro diário
 ### 19/05
