@@ -1,6 +1,7 @@
 local ArticleDao = require('models/article_dao')
 local Article = require('models/article')
 local ArticleSerializer = require('models/article_serializer')
+local utils = require 'utils'
 local view = require('view')
 
 local M = {
@@ -14,7 +15,7 @@ local M = {
 M.metatable = {
   home = function(self, params)
     local articles = self.dao:all()
-    
+
     return view.render("home.html.elua", {args = {
       articles = ArticleSerializer:serialize_many(articles),
     }})
@@ -22,7 +23,7 @@ M.metatable = {
 
   index = function(self, params)
     local articles = self.dao:all(params.query)
-    
+
     return view.render("articles.html.elua", {args = {
       articles = ArticleSerializer:serialize_many(articles),
       query = params.query,
@@ -30,15 +31,18 @@ M.metatable = {
   end,
 
   create = function(self, params)
+
+    params.authors = utils.split(params.authors, "[^,]+")
+
     local article = Article:new(params)
     article = self.dao:insert(article, params.document)
-    
+
     return view.redirect_to("/articles.html")
   end,
 
   download = function(self, params)
     local article, file = self.dao:download(params.id)
-    
+
     if article then
       return view.respond_with({
         status = 200,
@@ -78,7 +82,7 @@ M.metatable = {
 
   show = function(self, params)
     local article = self.dao:find(params.id)
-    
+
     if article then
       return view.render("article.html.elua", {args = {
         article = ArticleSerializer:serialize_one(article)

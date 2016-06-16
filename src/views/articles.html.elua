@@ -3,14 +3,14 @@
   <br>
 
   <p>Pesquise por título, nome dos autores, conferência, e abstract</p>
-  <form action="/articles.html" method="GET" class="input-group">
-    <input type="text" name="query" class="form-control" placeholder="Termos da Pesquisa" value="{{query}}">
+  <div class="input-group">
+    <input type="text" class="form-control" placeholder="Termos da Pesquisa">
     <span class="input-group-btn">
       <button class="btn btn-info" type="button">
         Pesquisar
       </button>
     </span>
-  </form>
+  </div>
 
   <hr>
 
@@ -73,37 +73,35 @@
         <form action="/articles" method="post" enctype="multipart/form-data">
           <div class="form-group">
             <label for="exampleInputFile">PDF do Artigo</label>
-            <input type="file" id="exampleInputFile" name="documento">
+            <input type="file" id="exampleInputFile" name="document">
             <p class="help-block">O sistema vai prepopular os campos automaticamente a partir do PDF do Artigo.</p>
           </div>
 
           <div class="form-group">
             <label for="input-titulo">Título</label>
-            <input type="text" class="form-control" id="input-titulo">
+            <input type="text" name="title" class="form-control" id="input-titulo">
           </div>
 
           <div class="form-group">
             <label for="input-autores">Autores</label>
-            <input type="text" class="form-control" id="input-autores">
+            <input type="text" class="form-control" name="authors" id="input-autores">
           </div>
 
           <div class="form-group">
             <label for="input-conferencia">Conferência</label>
-            <input type="text" class="form-control" id="input-conferencia">
+            <input type="text" class="form-control" name="conferencia" id="input-conferencia">
           </div>
 
           <div class="form-group">
             <label for="input-abstract">Abstract</label>
-            <textarea class="form-control" id="input-abstract"></textarea>
+            <textarea class="form-control" name="abstract" id="input-abstract"></textarea>
           </div>
 
-          <input type="submit" id="input-submit" class="hidden">
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            <button class="btn btn-primary">Enviar</button>
+          </div>
         </form>
-
-      </div>
-      <div class="modal-footer">
-        <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
-        <button type="button" class="btn btn-primary">Enviar</button>
       </div>
     </div>
   </div>
