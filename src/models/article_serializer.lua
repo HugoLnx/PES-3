@@ -1,4 +1,3 @@
-local Article = require "models/article"
 local utils = require "utils"
 
 local function data_for(article)

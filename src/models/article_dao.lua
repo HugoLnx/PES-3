@@ -17,12 +17,13 @@ local M = {
 M.metatable = {
   insert = function(self, article, uploaded_document)
     if not article or not uploaded_document then error() end
+    
+    article.document_text = self:__get_text_from_pdf(uploaded_document.path)
     local result = self:__collection():insert_one(article:data())
     if result.acknowledged then
       local data = utils.merge(article:data(), {id = result.inserted_id.key})
       local article = Article:new(data)
-      local text = self:__move_uploaded_document(uploaded_document, article)
-      article.document_text =  text
+      self:__move_uploaded_document(uploaded_document, article)
       return article
     else
       return nil
@@ -62,9 +63,9 @@ M.metatable = {
   end,
 
   download = function(self, id)
-    local id = self:__safe_object_id(id)
-    if not id then return nil end
-    self:__collection():update_one({_id = id}, {["$inc"] = {downloads = 1}})
+    local objId = self:__safe_object_id(id)
+    if not objId then return nil end
+    self:__collection():update_one({_id = objId}, {["$inc"] = {downloads = 1}})
     local article = self:find(id)
     local file = plutils.readfile(self:__document_abs_path(article), true)
     return article, file
@@ -84,7 +85,6 @@ M.metatable = {
     local destination_path = self:__document_abs_path(article)
     file.delete(destination_path)
     file.move(uploaded_document.path, destination_path)
-    return self:__get_text_from_pdf(destination_path)
   end,
   
   __get_text_from_pdf = function(self, path)
