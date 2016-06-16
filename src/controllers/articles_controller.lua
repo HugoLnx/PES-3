@@ -21,10 +21,11 @@ M.metatable = {
   end,
 
   index = function(self, params)
-    local articles = self.dao:all()
+    local articles = self.dao:all(params.query)
     
     return view.render("articles.html.elua", {args = {
       articles = ArticleSerializer:serialize_many(articles),
+      query = params.query,
     }})
   end,
 

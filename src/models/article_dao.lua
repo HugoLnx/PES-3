@@ -19,7 +19,7 @@ M.metatable = {
     if not article or not uploaded_document then error() end
     
     article.document_text = self:__get_text_from_pdf(uploaded_document.path)
-    local result = self:__collection():insert_one(article:data())
+    local result = self:__collection():insert_one(utils.merge(article:data(), self:__extra_data_for(article)))
     if result.acknowledged then
       local data = utils.merge(article:data(), {id = result.inserted_id.key})
       local article = Article:new(data)
@@ -30,8 +30,12 @@ M.metatable = {
     end
   end,
 
-  all = function(self)
-    return Article:build_all(self:__find_all())
+  all = function(self, search_term)
+    if search_term and search_term ~= "" then
+      return Article:build_all(self:__find_all({["$text"] = {["$search"] = search_term}}))
+    else
+      return Article:build_all(self:__find_all({}))
+    end
   end,
 
   find = function(self, id)
@@ -47,7 +51,7 @@ M.metatable = {
   end,
   
   update = function(self, article, uploaded_document)
-    local data = article:data()
+    local data = utils.merge(article:data(), self:__extra_data_for(article))
     data.id = nil
     local id = self:__safe_object_id(article.id)
     if not id then return nil end
@@ -106,6 +110,10 @@ M.metatable = {
   __safe_object_id = function(self, id)
     local ok, ret_or_err = pcall(ObjectId.new, id)
     if ok then return ret_or_err else return nil end
+  end,
+  
+  __extra_data_for = function(self, article)
+    return {authors_text = table.concat(article.authors, " ")}
   end,
 }
 

@@ -3,14 +3,14 @@
   <br>
 
   <p>Pesquise por título, nome dos autores, conferência, e abstract</p>
-  <div class="input-group">
-    <input type="text" class="form-control" placeholder="Termos da Pesquisa">
+  <form action="/articles.html" method="GET" class="input-group">
+    <input type="text" name="query" class="form-control" placeholder="Termos da Pesquisa" value="{{query}}">
     <span class="input-group-btn">
       <button class="btn btn-info" type="button">
         Pesquisar
       </button>
     </span>
-  </div>
+  </form>
 
   <hr>
 

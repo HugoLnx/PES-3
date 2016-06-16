@@ -11,14 +11,14 @@
         <p><a class="btn btn-primary btn-lg" href="/articles.html">Ver todos os Artigos &raquo;</a></p>
       </div>
       <div class="col-sm-8">
-        <div class="input-group input-lg">
-          <input type="text" class="form-control" placeholder="Pesquise por título, nome dos autores, conferência, e abstract">
+        <form action="/articles.html" method="get" class="input-group input-lg">
+          <input type="text" class="form-control" name="query" placeholder="Pesquise por título, nome dos autores, conferência, e abstract">
           <span class="input-group-btn">
             <button class="btn btn-info" type="button">
               Pesquisar
             </button>
           </span>
-        </div>
+        </form>
       </div>
     </div>
   </div>
