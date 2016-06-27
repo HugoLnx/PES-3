@@ -14,7 +14,6 @@ local M = {
 
 M.metatable = {
   call = function(self, calling)
-    local ngx = self.ngx
     local controller = require("controllers/" .. calling.controller .. "_controller"):new(self.connection)
     local action = calling.action
     local path_args = calling.path_args
