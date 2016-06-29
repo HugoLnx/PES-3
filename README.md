@@ -48,28 +48,23 @@
 * Criação do livro diário e TODO list para organização das tarefas. (Bernardo)
 
 ### 06/06
-* Criada a pasta diagrams e esboçar o diagrama de arquitetura (Lucas)
+* Criada a pasta diagrams e esboçar o diagrama de arquitetura. (Lucas)
 
 ### 07/06
-* Correções no diagrama de arquitetura nível 0 (Lucas)
+* Correções no diagrama de arquitetura nível 0. (Lucas)
 
-## TODO list
+### 09/06
+* Apresentação técnica.
 
-### Backend
-* Funcionalidade de obter informações relevantes de um pdf.
-* Criar comentários nos scripts (de preferência explicitando o porquê das decisões tomadas).
-* Campo de pesquisa que percorra o texto completo de um pdf.
+### 21/06
+* Apresentação técnica.
 
-### Frontend
-* Criar o form de inserção/edição de conferências.
-* Criar o form de inserção/edição de artigos.
+### 23/06
+* Apresentação do DFD e do Diagrama de Sequência. (Bernardo e Robert)
 
-### Documentação
-* Fazer diagrama de arquitetura nível 0.
-* Fazer diagramas de arquitetura nível 1.
-* Fazer diagrama(s?) de fluxo. A priori, DFD.
-* Aplicar as regras de disciplina.
-* Atualizar o livro diário.
+### 29/06
+* Atualizado o DFD. (Bernardo)
 
-### Integração
-* Ligar o frontend no backend.
+### 30/06
+* Preparação para a apresentação.
+* Cronograma atualizado para a versão final. (Bernardo)
