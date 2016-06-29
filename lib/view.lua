@@ -1,10 +1,16 @@
 local template = require "resty.template"
 local utils = require "utils"
 local path = require "pl.path"
+local cjson = require "cjson"
 
 local RENDER_DEFAULT_PARAMS = {
   status = 200,
   headers = {["Content-Type"] = "text/html"},
+}
+
+local RENDER_DEFAULT_JSON_PARAMS = {
+  status = 200,
+  headers = {["Content-Type"] = "application/json"},
 }
 
 M = {}
@@ -19,6 +25,11 @@ M.render = function(view_path, params)
   utils.copy_to(params.args or {}, view)
   params.args = nil
   return M.respond_with(utils.merge(RENDER_DEFAULT_PARAMS, params, {body = tostring(view)}))
+end
+
+M.render_json = function(table, params)
+  local params = params or {}
+  return M.respond_with(utils.merge(RENDER_DEFAULT_JSON_PARAMS, params, {body = cjson.encode(table)}))
 end
 
 M.redirect_to = function(path, params)

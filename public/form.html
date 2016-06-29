@@ -15,7 +15,25 @@
       <input type="file" name="document" />
       <button>Create</button>
     </form>
+    
+    <br/>
+    
+    <form id="fileform" action="/documents/read" method="post" enctype="multipart/form-data">
+      <input type="file" name="document" />
+    </form>
     <script   src="https://code.jquery.com/jquery-2.2.4.min.js"   integrity="sha256-BbhdlvQf/xTY9gja0Dq3HiwQF8LaCRTXxZKRutelT44="   crossorigin="anonymous"></script>
+    <script>
+      var form = document.getElementById("fileform");
+      form.addEventListener("change", function() {
+        var request = new XMLHttpRequest();
+        request.open("POST", this.action);
+        request.send(new FormData(this));
+        request.onload = function(ev) {
+          console.log(request);
+          console.log(request.responseText);
+        };
+      });
+    </script>
   </body>
 </html>
 

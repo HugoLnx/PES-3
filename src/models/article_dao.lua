@@ -2,6 +2,7 @@
 This modulo has the functions about the article DAO's(Data acess Object)
 ]]
 local Article = require "models/article"
+local DocumentParser = require "models/document_parser"
 local utils = require "utils"
 local app = require "app"
 local path = require "pl.path"
@@ -21,7 +22,7 @@ M.metatable = {
   insert = function(self, article, uploaded_document)
     if not article or not uploaded_document then error() end
     
-    article.document_text = self:__get_text_from_pdf(uploaded_document.path)
+    article.document_text = DocumentParser:get_text(uploaded_document.path)
     local result = self:__collection():insert_one(utils.merge(article:data(), self:__extra_data_for(article)))
     if result.acknowledged then
       local data = utils.merge(article:data(), {id = result.inserted_id.key})
@@ -92,13 +93,6 @@ M.metatable = {
     local destination_path = self:__document_abs_path(article)
     file.delete(destination_path)
     file.move(uploaded_document.path, destination_path)
-  end,
-  
-  __get_text_from_pdf = function(self, path)
-    local handle = io.popen("pdftotext '" .. path .. "' '-'")
-    local content = handle:read("*a")
-    handle:close()
-    return content
   end,
   
   __document_abs_path = function(self, article)
