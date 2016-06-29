@@ -32,68 +32,28 @@
   </h2>
 
   <div class="row">
+    {% for _, conference in ipairs(conferences) do %}
     <div class="col-md-4">
-      <a href="/artigos.html">
+      <a href="/conferences/{{conference.id}}.html">
         <div class="panel panel-default">
           <div class="panel-body">
-            <h3>WER15</h3>
-            <h4>Workshop em Engenharia de Requisitos 2015</h4>
+            <h3>{{conference.abbreviation}}</h3>
+            <h4>{{conference.name}}</h4>
             <p>
-              <em>Lima, Peru &mdash; Abril de 2015</em>
+              <em>{{conference.location}} &mdash; {{conference.month}} de {{conference.year}}</em>
             </p>
             <p>
-              Editado por Hugo Vega, Ernesto Cuadros, João Araújo, Nelly Condori-Fernandez
+              Editado por {{conference.editors}}
             </p>
             <ul class="artigo-stats">
-              <li>Artigos: 7</li>
-              <li>Downloads totais: 1027</li>
+              <li>Artigos: x</li>
+              <li>Downloads totais: x</li>
             </ul>
           </div>
         </div>
       </a>
     </div>
-
-    <div class="col-md-4">
-      <a href="/artigos.html">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <h3>WER15</h3>
-            <h4>Workshop em Engenharia de Requisitos 2015</h4>
-            <p>
-              <em>Lima, Peru &mdash; Abril de 2015</em>
-            </p>
-            <p>
-              Editado por Hugo Vega, Ernesto Cuadros, João Araújo, Nelly Condori-Fernandez
-            </p>
-            <ul class="artigo-stats">
-              <li>Artigos: 7</li>
-              <li>Downloads totais: 1027</li>
-            </ul>
-          </div>
-        </div>
-      </a>
-    </div>
-
-    <div class="col-md-4">
-      <a href="/artigos.html">
-        <div class="panel panel-default">
-          <div class="panel-body">
-            <h3>WER15</h3>
-            <h4>Workshop em Engenharia de Requisitos 2015</h4>
-            <p>
-              <em>Lima, Peru &mdash; Abril de 2015</em>
-            </p>
-            <p>
-              Editado por Hugo Vega, Ernesto Cuadros, João Araújo, Nelly Condori-Fernandez
-            </p>
-            <ul class="artigo-stats">
-              <li>Artigos: 7</li>
-              <li>Downloads totais: 1027</li>
-            </ul>
-          </div>
-        </div>
-      </a>
-    </div>
+    {% end %}
   </div>
 
   <h2>

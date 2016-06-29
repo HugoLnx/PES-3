@@ -13,14 +13,6 @@ local M = {
 }
 
 M.metatable = {
-  home = function(self, params)
-    local articles = self.dao:all()
-
-    return view.render("home.html.elua", {args = {
-      articles = ArticleSerializer:serialize_many(articles),
-    }})
-  end,
-
   index = function(self, params)
     local articles = self.dao:all(params.query)
 

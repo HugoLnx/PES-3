@@ -21,6 +21,8 @@
 ## Paths importantes
 * GET /
 * GET /articles.html
+* GET /conferences.html
+* GET /conference/$id.html
 
 * GET /form.html - Exemplo de formulário onde pode-se criar um artigo
 * GET /update-form.html - Exemplo de formulário que atualiza o último artigo adicionado
@@ -28,6 +30,10 @@
 * POST /articles - Cria um artigo fazendo upload do PDF (tem que enviar como 'multipart/form-data')
 * POST /articles/$id/update - Atualiza um artigo  (tem que enviar como 'multipart/form-data') PS.: Não usei PUT por que estava tendo problemas em habilitar upload pro PUT :P
 * GET /articles/$id.pdf - Baixa PDF contabilizando o número de downloads
+
+* POST /conferences - Cria uma conferencia
+* POST /conferences/$id/update - Atualiza uma conferencia
+
 
 ## Livro diário
 ### 19/05
