@@ -1,7 +1,7 @@
 local utils = require "utils"
 local path = require "pl.path"
 
-local ATTRIBUTES = {"id", "abbreviation", "name", "authors", "location", "month", "year", "editors", "creation_date"}
+local ATTRIBUTES = {"id", "abbreviation", "name", "location", "month", "year", "editors", "creation_date"}
 
 local function to_data(values)
   local data = {}

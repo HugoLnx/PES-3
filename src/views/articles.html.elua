@@ -1,6 +1,8 @@
 <div class="container">
   <h1>Listagem de Artigos</h1>
   <br>
+  <a href="/home">&lt; Home</a>
+  <br>
 
   <p>Pesquise por título, nome dos autores, conferência, e abstract</p>
   <form action="/articles.html" method="get" class="input-group">

@@ -1,15 +1,20 @@
-<div class="panel panel-default">
-  <div class="panel-body">
-    <a href="{{article.view_path}}" class="artigo-titulo">{{article.title}}</a>
-    <span class="artigo-autores">{{article.authors}}</span>
-    <p class="artigo-abstract" data-limit="200">
-      {{article.abstract}}
-    </p>
-    <ul class="artigo-stats">
-      <li>Downloads: {{article.downloads}}</li>
-      <li>Citado por: {{article.quoting_rate}}</li>
-      <li><a href="{{article.scholar_link}}">[Scholar]</a></li>
-      <li class="link-download"><a href="{{article.download_path}}">Download</a></li>
-    </ul>
-  </div>
+<div class="col-md-4">
+  <a href="/conferences/{{conference.id}}.html">
+    <div class="panel panel-default">
+      <div class="panel-body">
+        <h3>{{conference.abbreviation}}</h3>
+        <h4>{{conference.name}}</h4>
+        <p>
+          <em>{{conference.location}} &mdash; {{conference.month}} de {{conference.year}}</em>
+        </p>
+        <p>
+          Editado por {{conference.editors}}
+        </p>
+        <ul class="artigo-stats">
+          <li>Artigos: x</li>
+          <li>Downloads totais: x</li>
+        </ul>
+      </div>
+    </div>
+  </a>
 </div>

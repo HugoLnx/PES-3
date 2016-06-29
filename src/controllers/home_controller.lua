@@ -1,7 +1,7 @@
 local ArticleDao = require('models/article_dao')
 local Article = require('models/article')
 local ArticleSerializer = require('models/article_serializer')
-local ConferenceDao = require('models/conference')
+local ConferenceDao = require('models/conference_dao')
 local Conference = require('models/conference')
 local ConferenceSerializer = require('models/conference_serializer')
 local utils = require 'utils'
@@ -10,7 +10,7 @@ local view = require('view')
 local M = {
   new = function(self, connection, app)
     local controller = {
-      article_dao = ArticleDao:new(connection)
+      article_dao = ArticleDao:new(connection),
       conference_dao = ConferenceDao:new(connection)
     }
     setmetatable(controller, {__index = self.metatable})

@@ -1,0 +1,109 @@
+<div class="container">
+  <h1>Listagem de Conferencias</h1>
+  <br>
+  <a href="/home">&lt; Home</a>
+
+
+  <hr>
+
+  <div class="row">
+  {% for _, conference in ipairs(conferences) do %}
+    <div class="col-md-4">
+      <a href="/conferences/{{conference.id}}.html">
+        <div class="panel panel-default">
+          <div class="panel-body">
+            <h3>{{conference.abbreviation}}</h3>
+            <h4>{{conference.name}}</h4>
+            <p>
+              <em>{{conference.location}} &mdash; {{conference.month}} de {{conference.year}}</em>
+            </p>
+            <p>
+              Editado por {{conference.editors}}
+            </p>
+            <ul class="artigo-stats">
+              <li>Artigos: x</li>
+              <li>Downloads totais: x</li>
+            </ul>
+          </div>
+        </div>
+      </a>
+    </div>
+  {% end %}
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4 text-center">
+      <nav>
+        <ul class="pagination">
+          <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+          <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col-sm-4">
+      <a href="" class="btn btn-success pull-right"  data-toggle="modal" data-target="#myModal">
+        Adicionar Conferencia
+      </a>
+    </div>
+  </div>
+
+  <hr>
+
+  <footer>
+    <p>&copy; 2016 PUC-Rio</p>
+  </footer>
+</div>
+
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+  <div class="modal-dialog" role="document">
+    <div class="modal-content">
+      <div class="modal-header">
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+        <h4 class="modal-title" id="myModalLabel">Adicionar Conferencia</h4>
+      </div>
+      <div class="modal-body">
+
+        <form action="/conferences" method="post" enctype="multipart/form-data">
+          <div class="form-group">
+            <label for="input-titulo">Abreviacao</label>
+            <input type="text" name="abbreviation" class="form-control" id="input-abreviacao" required>
+          </div>
+
+          <div class="form-group">
+            <label for="input-titulo">Nome</label>
+            <input type="text" name="name" class="form-control" id="input-name" required>
+          </div>
+
+          <div class="form-group">
+            <label for="input-autores">Editores</label>
+            <input type="text" class="form-control" name="editors" id="input-editores" required>
+          </div>
+
+          <div class="form-group">
+            <label for="input-local">Local</label>
+            <input type="text" class="form-control" name="location" id="input-local" required>
+          </div>
+
+          <div class="form-group">
+            <label for="input-mes">Mes</label>
+            <input type="number" class="form-control" name="month" id="input-mes" min="1" max="12" required>
+          </div>
+
+          <div class="form-group">
+            <label for="input-ano">Ano</label>
+            <input type="number" class="form-control" name="year" id="input-ano" min="1990" max="2050" required>
+          </div>
+
+          <div class="modal-footer">
+            <button type="button" class="btn btn-danger" data-dismiss="modal">Cancelar</button>
+            <button class="btn btn-primary">Enviar</button>
+          </div>
+        </form>
+      </div>
+    </div>
+  </div>
+</div>

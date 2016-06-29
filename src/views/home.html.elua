@@ -28,7 +28,7 @@
 <div class="container">
   <h2>
     Conferências Recentes
-    <small class="pull-right"><a href="#" class="text-muted">Ver todas</a></small>
+    <small class="pull-right"><a href="/conferences.html" class="text-muted">Ver todas</a></small>
   </h2>
 
   <div class="row">
