@@ -106,6 +106,7 @@ RUN luarocks install multipart
 RUN luarocks install luafilesystem
 RUN luarocks install penlight
 RUN luarocks install lua-resty-template
+RUN luarocks install lua-resty-cookie
 
 # ***** CLEANUP *****
 RUN rm -rf /nginx-${VER_NGINX}

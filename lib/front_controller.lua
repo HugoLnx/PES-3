@@ -18,6 +18,8 @@ M.metatable = {
     local action = calling.action
     local path_args = calling.path_args
     local args = self:__get_args(path_args) 
+    local ck = require "resty.cookie"
+    args.cookie, err = ck:new()
     
     local output = controller[action](controller, args) 
     if output.redirect_to then

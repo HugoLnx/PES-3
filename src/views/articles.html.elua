@@ -32,11 +32,13 @@
         </ul>
       </nav>
     </div>
+		{% if is_admin then %}
     <div class="col-sm-4">
       <a href="" class="btn btn-success pull-right"  data-toggle="modal" data-target="#myModal">
         Adicionar Artigo
       </a>
     </div>
+		{% end %}
   </div>
 
   <hr>

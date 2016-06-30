@@ -15,6 +15,7 @@ local Conference = require('models/conference')
 local ConferenceSerializer = require('models/conference_serializer')
 local ArticleDao = require('models/article_dao')
 local ArticleSerializer = require('models/article_serializer')
+local Authentication = require('models/authentication')
 local utils = require 'utils'
 local view = require 'view'
 
@@ -32,10 +33,12 @@ local M = {
 M.metatable = {
   index = function(self, params)
     local conferences = self.dao:all(params.query)
+    local auth = Authentication:new(params.cookie)
 
     return view.render("conferences.html.elua", {args = {
       conferences = ConferenceSerializer:serialize_many(conferences),
       query = params.query,
+      is_admin = auth:is_signedin(),
     }})
   end,
 

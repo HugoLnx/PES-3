@@ -13,7 +13,7 @@ local utils = require 'utils'
 local view = require('view')
 
 local M = {
-  new = function(self, connection, app)
+  new = function(self, connection)
     local controller = {
       article_dao = ArticleDao:new(connection),
       conference_dao = ConferenceDao:new(connection)
