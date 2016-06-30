@@ -1,3 +1,6 @@
+--[[article DAO modulos
+This modulo has the functions about the article DAO's(Data acess Object)
+]]
 local Article = require "models/article"
 local utils = require "utils"
 local app = require "app"

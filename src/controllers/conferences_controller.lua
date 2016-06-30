@@ -1,8 +1,7 @@
---[[ Módulo conferences_controller
-módulo responsável por ser o controller das conferências
-neste módulo é criado o M(...)  que....
+--[[  conferences_controller Módulo
+modulo responsible for being the conference controller
 
-O M... possui a metatable que possui as funções:
+it has the functions:
 index: Indexa a conferência
 create: Cria uma conferência
 update: Atualiza uma conferência

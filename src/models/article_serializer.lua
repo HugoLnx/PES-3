@@ -1,3 +1,6 @@
+--[[article serializer modulos
+This modulo has the functions about the article serializer
+]]
 local utils = require "utils"
 
 local function data_for(article)

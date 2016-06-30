@@ -1,3 +1,6 @@
+--[[conference serializer modulos
+This modulo has the functions about the conference serializer
+]]
 local utils = require "utils"
 
 local function data_for(conference)

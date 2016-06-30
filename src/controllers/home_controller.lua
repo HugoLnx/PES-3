@@ -1,14 +1,7 @@
---[[ Módulo conferences_controller
-módulo responsável por ser o controller das conferências
-neste módulo é criado o M(...)  que....
+--[[  home_controller Modulo
+this is the modulo responsible for being the controller of the home page
 
-O M... possui a metatable que possui as funções:
-index: Indexa a conferência
-create: Cria uma conferência
-update: Atualiza uma conferência
-destroy: Deleta uma conferência
-show: Mostra uma conferência
-
+this modulo creates the DAO of the articles and conference and serializes them
 ]]
 local ArticleDao = require('models/article_dao')
 local Article = require('models/article')

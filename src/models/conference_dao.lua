@@ -1,3 +1,6 @@
+--[[conference DAO modulos
+This modulo has the functions about the conference DAO's(Data acess Object)
+]]
 local Conference = require "models/conference"
 local utils = require "utils"
 local app = require "app"

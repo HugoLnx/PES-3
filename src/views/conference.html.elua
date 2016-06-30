@@ -1,3 +1,4 @@
+<!--view of a conference-->
 <div class="col-md-4">
   <a href="/conferences/{{conference.id}}.html">
     <div class="panel panel-default">
