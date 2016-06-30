@@ -10,7 +10,7 @@ local plutils = require "pl.utils"
 local ObjectId = require("mongorover.luaBSONObjects").ObjectId
 
 local M = {
-  new = function(self, connection, app)
+  new = function(self, connection)
     local dao = {connection = connection}
     setmetatable(dao, {__index = self.metatable})
     return dao

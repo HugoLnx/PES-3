@@ -8,11 +8,15 @@ local app = require "app"
 local path = require "pl.path"
 local file = require "pl.file"
 local plutils = require "pl.utils"
+local ConferenceDAO = require("models/conference_dao")
 local ObjectId = require("mongorover.luaBSONObjects").ObjectId
 
 local M = {
-  new = function(self, connection, app)
-    local dao = {connection = connection}
+  new = function(self, connection)
+    local dao = {
+      connection = connection,
+      conferenceDao = ConferenceDAO:new(connection),
+    }
     setmetatable(dao, {__index = self.metatable})
     return dao
   end,
@@ -35,17 +39,22 @@ M.metatable = {
   end,
 
   all = function(self, search_term)
+    local articles = {}
     if search_term and search_term ~= "" then
-      return Article:build_all(self:__find_all({["$text"] = {["$search"] = search_term}}))
+      articles = Article:build_all(self:__find_all({["$text"] = {["$search"] = search_term}}))
     else
-      return Article:build_all(self:__find_all({}))
+      articles = Article:build_all(self:__find_all({}))
     end
+    for i,article in ipairs(articles) do
+      articles[i] = self:__build_article(article:data())
+    end
+    return articles
   end,
 
   find = function(self, id)
     local id = self:__safe_object_id(id)
     if not id then return nil end
-    return Article:new(self:__find_all({_id = id})[1])
+    return self:__build_article(self:__find_all({_id = id})[1])
   end,
   
   delete = function(self, id)
@@ -112,6 +121,15 @@ M.metatable = {
   __extra_data_for = function(self, article)
     return {authors_text = table.concat(article.authors, " ")}
   end,
+  
+  __build_article = function(self, data)
+    local article = Article:new(data)
+    if article.conference_id then
+      article.conference = self.conferenceDao:find(article.conference_id)
+    end
+    return article
+    
+  end
 }
 
 return M

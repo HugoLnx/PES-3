@@ -2,13 +2,20 @@
 This modulo has the functions about the article serializer
 ]]
 local utils = require "utils"
+local ConferenceSerializer = require "models/conference_serializer"
 
 local function data_for(article)
-  return utils.merge(article:data(), {
+  local data = utils.merge(article:data(), {
     download_path = article:document_path(),
     authors = table.concat(article.authors, ", "),
     view_path = "/articles/" .. article.id .. ".html",
   })
+  if article.conference then
+    data.conference = ConferenceSerializer:serialize_one(article.conference)
+  else
+    data.conference = {}
+  end
+  return data
 end
 
 return {

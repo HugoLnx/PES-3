@@ -13,12 +13,17 @@ show: shows a conferencia
 local ArticleDao = require('models/article_dao')
 local Article = require('models/article')
 local ArticleSerializer = require('models/article_serializer')
+local ConferenceDao = require('models/conference_dao')
+local ConferenceSerializer = require('models/conference_serializer')
 local utils = require 'utils'
 local view = require('view')
 
 local M = {
   new = function(self, connection, app)
-    local controller = {dao = ArticleDao:new(connection)}
+    local controller = {
+      dao = ArticleDao:new(connection),
+      conferenceDao = ConferenceDao:new(connection),
+    }
     setmetatable(controller, {__index = self.metatable})
     return controller
   end,
@@ -27,9 +32,11 @@ local M = {
 M.metatable = {
   index = function(self, params)
     local articles = self.dao:all(params.query)
+    local conferences = self.conferenceDao:all()
 
     return view.render("articles.html.elua", {args = {
       articles = ArticleSerializer:serialize_many(articles),
+      conferences = ConferenceSerializer:serialize_many(conferences),
       query = params.query,
     }})
   end,

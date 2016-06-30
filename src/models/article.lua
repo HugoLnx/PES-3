@@ -5,7 +5,7 @@ This modulo is responsible to play the role of model in MVC design pattern.
 local utils = require "utils"
 local path = require "pl.path"
 
-local ATTRIBUTES = {"id", "title", "abstract", "authors", "downloads", "quoting_rate", "document_text", "creation_date"}
+local ATTRIBUTES = {"id", "title", "abstract", "authors", "downloads", "quoting_rate", "document_text", "creation_date", "conference_id"}
 
 local function to_data(values)
   local data = {}
