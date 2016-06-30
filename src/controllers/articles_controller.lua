@@ -1,3 +1,16 @@
+--[[ Módulo articles_controller
+módulo responsável por ser o controller dos artigos
+neste módulo é criado o M(...)  que....
+
+O M... possui a metatable que possui as funções:
+index: Indexa um artigo
+create: Cria um artigo
+download: Baixa um artigo
+update: Atualiza um artigo
+destroy: Deleta um artigo
+show: Mostra um artigo
+
+]]
 local ArticleDao = require('models/article_dao')
 local Article = require('models/article')
 local ArticleSerializer = require('models/article_serializer')
@@ -86,3 +99,4 @@ M.metatable = {
 }
 
 return M
+	

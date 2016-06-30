@@ -1,4 +1,4 @@
-# PES-3
+# PES-3 - README
 
 ## Configurando ambiente
 1. instale [docker-engine](https://docs.docker.com/engine/installation/)

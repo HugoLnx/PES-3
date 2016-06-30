@@ -1,3 +1,16 @@
+--[[ Módulo conferences_controller
+módulo responsável por ser o controller das conferências
+neste módulo é criado o M(...)  que....
+
+O M... possui a metatable que possui as funções:
+index: Indexa a conferência
+create: Cria uma conferência
+update: Atualiza uma conferência
+destroy: Deleta uma conferência
+show: Mostra uma conferência
+
+]]
+
 local ConferenceDao = require('models/conference_dao')
 local Conference = require('models/conference')
 local ConferenceSerializer = require('models/conference_serializer')
