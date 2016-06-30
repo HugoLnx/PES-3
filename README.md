@@ -1,6 +1,8 @@
 # PES-3 - README
-
-Tamanho: TODO linhas
+* Autoria: Bernardo, Hugo, Guilherme, Lucas e Pedro
+* Data: 30/06
+* Versão: 16
+* Tamanho: 225 linhas
 
 ## Para uso da equipe
 ### Configurando ambiente
@@ -39,142 +41,142 @@ Tamanho: TODO linhas
 
 ## Marcação dos documentos
 ### /Dockerfile
-Autoria: Hugo
-Data: 8/06
-Versão: 6
-Tamanho: 126 linhas
+* Autoria: Hugo
+* Data: 8/06
+* Versão: 6
+* Tamanho: 126 linhas
 
 ### /nginx.conf
-Autoria: Hugo e Guilherme
-Data: 29/06
-Versão: 17
-Tamanho: 253 linhas
+* Autoria: Hugo e Guilherme
+* Data: 29/06
+* Versão: 17
+* Tamanho: 253 linhas
 
 ### /docker-compose.yml
-Autoria: Hugo
-Data: 24/05
-Versão: 1
-Tamanho: 19 linhas
+* Autoria: Hugo
+* Data: 24/05
+* Versão: 1
+* Tamanho: 19 linhas
 
 ### /diagrams/Arquitetura.asta
-Autoria: Lucas, Robert e Pedro
-Data: 29/06
-Versão: 4
-Tamanho: 31.3 KB
+* Autoria: Lucas, Robert e Pedro
+* Data: 29/06
+* Versão: 4
+* Tamanho: 31.3 KB
 
 ### /diagrams/DFD.pdf
-Autoria: Bernardo
-Data: 29/06
-Versão: 2
-Tamanho: 431 KB
+* Autoria: Bernardo
+* Data: 29/06
+* Versão: 2
+* Tamanho: 431 KB
 
 ### /documents/Cronograma.xls
-Autoria: Bernardo
-Data: 29/06
-Versão: 4
-Tamanho: 9.5 KB
+* Autoria: Bernardo
+* Data: 29/06
+* Versão: 4
+* Tamanho: 9.5 KB
 
 ### /lib/front_controller.lua
-Autoria: Hugo
-Data: 27/06
-Versão: 4
-Tamanho: 75 linhas
+* Autoria: Hugo
+* Data: 27/06
+* Versão: 4
+* Tamanho: 75 linhas
 
 ### /lib/utils.lua
-Autoria: Hugo
-Data: 09/06
-Versão: 2
-Tamanho: 42 linhas
+* Autoria: Hugo
+* Data: 09/06
+* Versão: 2
+* Tamanho: 42 linhas
 
 ### /lib/view.lua
-Autoria: Hugo
-Data: 29/06
-Versão: 2
-Tamanho: 40 linhas
+* Autoria: Hugo
+* Data: 29/06
+* Versão: 2
+* Tamanho: 40 linhas
 
 ### /public/form.html
-Autoria: Hugo
-Data: 29/06
-Versão: 4
-Tamanho: 40 linhas
+* Autoria: Hugo
+* Data: 29/06
+* Versão: 4
+* Tamanho: 40 linhas
 
 ### /public/update_form.html
-Autoria: Hugo
-Data: 28/05
-Versão: 1
-Tamanho: 40 linhas
+* Autoria: Hugo
+* Data: 28/05
+* Versão: 1
+* Tamanho: 40 linhas
 
 ### /public/css/bootstrap.min.css
-Autoria: Guilherme
-Data: 02/06
-Versão: 1
-Tamanho: 14 linhas
+* Autoria: Guilherme
+* Data: 02/06
+* Versão: 1
+* Tamanho: 14 linhas
 
 ### /public/css/config.json
-Autoria: Guilherme
-Data: 02/06
-Versão: 1
-Tamanho: 435 linhas
+* Autoria: Guilherme
+* Data: 02/06
+* Versão: 1
+* Tamanho: 435 linhas
 
 ### /public/css/style.css
-Autoria: Guilherme
-Data: 02/06
-Versão: 1
-Tamanho: 60 linhas
+* Autoria: Guilherme
+* Data: 02/06
+* Versão: 1
+* Tamanho: 60 linhas
 
 ### /public/fonts/glyphicons-halflings-regular.eot
-Autoria: Guilherme
-Data: 02/06
-Versão: 1
-Tamanho: 19.7 KB
+* Autoria: Guilherme
+* Data: 02/06
+* Versão: 1
+* Tamanho: 19.7 KB
 
 ### /public/fonts/glyphicons-halflings-regular.svg
-Autoria: Guilherme
-Data: 02/06
-Versão: 1
-Tamanho: 106 KB
+* Autoria: Guilherme
+* Data: 02/06
+* Versão: 1
+* Tamanho: 106 KB
 
 ### /public/fonts/glyphicons-halflings-regular.ttf
-Autoria: Guilherme
-Data: 02/06
-Versão: 1
-Tamanho: 44.3 KB
+* Autoria: Guilherme
+* Data: 02/06
+* Versão: 1
+* Tamanho: 44.3 KB
 
 ### /public/fonts/glyphicons-halflings-regular.woff
-Autoria: Guilherme
-Data: 02/06
-Versão: 1
-Tamanho: 22.9 KB
+* Autoria: Guilherme
+* Data: 02/06
+* Versão: 1
+* Tamanho: 22.9 KB
 
 ### /public/fonts/glyphicons-halflings-regular.woff2
-Autoria: Guilherme
-Data: 02/06
-Versão: 1
-Tamanho: 17.6 KB
+* Autoria: Guilherme
+* Data: 02/06
+* Versão: 1
+* Tamanho: 17.6 KB
 
 ### /public/js/bootstrap.min.js
-Autoria: Guilherme
-Data: 02/06
-Versão: 1
-Tamanho: 7 linhas
+* Autoria: Guilherme
+* Data: 02/06
+* Versão: 1
+* Tamanho: 7 linhas
 
 ### /public/js/jquery.min.js
-Autoria: Guilherme
-Data: 02/06
-Versão: 1
-Tamanho: 5 linhas
+* Autoria: Guilherme
+* Data: 02/06
+* Versão: 1
+* Tamanho: 5 linhas
 
 ### /public/js/script.js
-Autoria: Guilherme e Hugo
-Data: 09/06
-Versão: 3
-Tamanho: 37 linhas
+* Autoria: Guilherme e Hugo
+* Data: 09/06
+* Versão: 3
+* Tamanho: 37 linhas
 
 ### /scripts/create_indexes.sh
-Autoria: Hugo
-Data: 16/06
-Versão: 1
-Tamanho: 3 linhas
+* Autoria: Hugo
+* Data: 16/06
+* Versão: 1
+* Tamanho: 3 linhas
 
 ### Diretório /src/
 
