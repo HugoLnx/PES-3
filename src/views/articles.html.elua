@@ -28,9 +28,6 @@
         <p class="artigo-abstract" data-limit="200">
           {{article.abstract}}
         </p>
-        <p class="artigo-abstract" data-limit="200">
-          ((()))
-        </p>
         <ul class="artigo-stats">
           <li>Downloads: {{article.downloads}}</li>
           <li>Citado por: {{article.quoting_rate}}</li>

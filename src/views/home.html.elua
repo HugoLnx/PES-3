@@ -64,10 +64,11 @@
 
   <div class="row">
     {% for _, article in ipairs(articles) do %}
-    <div class="col-md-4">
       <div class="panel panel-default">
         <div class="panel-body">
-          <a href="{{article.view_path}}" class="artigo-titulo">{{article.title}}</a>
+          <span  class="artigo-titulo">
+            <a href="{{article.view_path}}">{{article.title}}</a> (<a href={{article.conference.view_path}}>{{article.conference.name}}</a>)
+          </span>
           <span class="artigo-autores">{{article.authors}}</span>
           <p class="artigo-abstract" data-limit="200">
             {{article.abstract}}
@@ -80,7 +81,6 @@
           </ul>
         </div>
       </div>
-    </div>
     {% end %}
   </div>
 

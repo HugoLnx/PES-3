@@ -13,12 +13,17 @@ show: Mostra uma conferência
 local ConferenceDao = require('models/conference_dao')
 local Conference = require('models/conference')
 local ConferenceSerializer = require('models/conference_serializer')
+local ArticleDao = require('models/article_dao')
+local ArticleSerializer = require('models/article_serializer')
 local utils = require 'utils'
-local view = require('view')
+local view = require 'view'
 
 local M = {
   new = function(self, connection, app)
-    local controller = {dao = ConferenceDao:new(connection)}
+    local controller = {
+      dao = ConferenceDao:new(connection),
+      articleDao = ArticleDao:new(connection),
+    }
     setmetatable(controller, {__index = self.metatable})
     return controller
   end,
@@ -62,10 +67,13 @@ M.metatable = {
 
   show = function(self, params)
     local conference = self.dao:find(params.id)
+    local articles = self.articleDao:all_on_conference(conference.id)
+    conference.articles = articles
 
     if conference then
       return view.render("conference.html.elua", {args = {
-        conference = ConferenceSerializer:serialize_one(conference)
+        conference = ConferenceSerializer:serialize_one(conference),
+        articles = ArticleSerializer:serialize_many(articles),
       }})
     else
       return view.render("not_found.html.elua", {status = 404})

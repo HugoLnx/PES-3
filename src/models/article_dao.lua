@@ -39,16 +39,15 @@ M.metatable = {
   end,
 
   all = function(self, search_term)
-    local articles = {}
     if search_term and search_term ~= "" then
-      articles = Article:build_all(self:__find_all({["$text"] = {["$search"] = search_term}}))
+      return self:__all{["$text"] = {["$search"] = search_term}}
     else
-      articles = Article:build_all(self:__find_all({}))
+      return self:__all()
     end
-    for i,article in ipairs(articles) do
-      articles[i] = self:__build_article(article:data())
-    end
-    return articles
+  end,
+
+  all_on_conference = function(self, conference_id)
+    return self:__all{conference_id = conference_id}
   end,
 
   find = function(self, id)
@@ -86,6 +85,15 @@ M.metatable = {
     local article = self:find(id)
     local file = plutils.readfile(self:__document_abs_path(article), true)
     return article, file
+  end,
+  
+  __all = function(self, query)
+    local query = query or {}
+    local articles = Article:build_all(self:__find_all(query))
+    for i,article in ipairs(articles) do
+      articles[i] = self:__build_article(article:data())
+    end
+    return articles
   end,
   
   __find_all = function(self, query)

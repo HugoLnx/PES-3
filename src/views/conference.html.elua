@@ -1,21 +1,65 @@
 <!--view of a conference-->
-<div class="col-md-4">
-  <a href="/conferences/{{conference.id}}.html">
+<div class="container">
+  <div class="row">
+		<h3>{{conference.abbreviation}}</h3>
+		<h4>{{conference.name}}</h4>
+		<p>
+			<em>{{conference.location}} &mdash; {{conference.month}} de {{conference.year}}</em>
+		</p>
+		<p>
+			Editado por {{conference.editors}}
+		</p>
+		<ul class="artigo-stats">
+			<li>Artigos: {{conference.articles_count}}</li>
+			<li>Downloads totais: {{conference.downloads}}</li>
+		</ul>
+	</div>
+
+  <div class="row">
+  {% for _, article in ipairs(articles) do %}
     <div class="panel panel-default">
       <div class="panel-body">
-        <h3>{{conference.abbreviation}}</h3>
-        <h4>{{conference.name}}</h4>
-        <p>
-          <em>{{conference.location}} &mdash; {{conference.month}} de {{conference.year}}</em>
-        </p>
-        <p>
-          Editado por {{conference.editors}}
+        <span  class="artigo-titulo">
+          <a href="{{article.view_path}}">{{article.title}}</a> (<a href={{article.conference.view_path}}>{{article.conference.name}}</a>)
+        </span>
+        <span class="artigo-autores">{{article.authors}}</span>
+        <p class="artigo-abstract" data-limit="200">
+          {{article.abstract}}
         </p>
         <ul class="artigo-stats">
-          <li>Artigos: x</li>
-          <li>Downloads totais: x</li>
+          <li>Downloads: {{article.downloads}}</li>
+          <li>Citado por: {{article.quoting_rate}}</li>
+          <li><a href="{{article.scholar_link}}">[Scholar]</a></li>
+          <li class="link-download"><a target="_blank" href="{{article.download_path}}">Download</a></li>
         </ul>
       </div>
     </div>
-  </a>
+  {% end %}
+  </div>
+
+  <br>
+
+  <div class="row">
+    <div class="col-sm-4 col-sm-offset-4 text-center">
+      <nav>
+        <ul class="pagination">
+          <li class="disabled"><a href="#" aria-label="Previous"><span aria-hidden="true">&laquo;</span></a></li>
+          <li class="active"><a href="#">1 <span class="sr-only">(current)</span></a></li>
+          <li><a href="#">2</a></li>
+          <li><a href="#" aria-label="Next"><span aria-hidden="true">&raquo;</span></a></li>
+        </ul>
+      </nav>
+    </div>
+    <div class="col-sm-4">
+      <a href="" class="btn btn-success pull-right"  data-toggle="modal" data-target="#myModal">
+        Adicionar Artigo
+      </a>
+    </div>
+  </div>
+
+  <hr>
+
+  <footer>
+    <p>&copy; 2016 PUC-Rio</p>
+  </footer>
 </div>
