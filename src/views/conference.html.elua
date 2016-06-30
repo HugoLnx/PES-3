@@ -15,27 +15,7 @@
 		</ul>
 	</div>
 
-  <div class="row">
-  {% for _, article in ipairs(articles) do %}
-    <div class="panel panel-default">
-      <div class="panel-body">
-        <span  class="artigo-titulo">
-          <a href="{{article.view_path}}">{{article.title}}</a> (<a href={{article.conference.view_path}}>{{article.conference.name}}</a>)
-        </span>
-        <span class="artigo-autores">{{article.authors}}</span>
-        <p class="artigo-abstract" data-limit="200">
-          {{article.abstract}}
-        </p>
-        <ul class="artigo-stats">
-          <li>Downloads: {{article.downloads}}</li>
-          <li>Citado por: {{article.quoting_rate}}</li>
-          <li><a href="{{article.scholar_link}}">[Scholar]</a></li>
-          <li class="link-download"><a target="_blank" href="{{article.download_path}}">Download</a></li>
-        </ul>
-      </div>
-    </div>
-  {% end %}
-  </div>
+  <div class="row">{(views/_articles.html.elua)}</div>
 
   <br>
 
