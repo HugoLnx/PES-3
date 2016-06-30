@@ -96,10 +96,12 @@ M.metatable = {
 
   show = function(self, params)
     local article = self.dao:find(params.id)
+    local auth = Authentication:new(params.cookie)
 
     if article then
       return view.render("article.html.elua", {args = {
-        article = ArticleSerializer:serialize_one(article)
+        article = ArticleSerializer:serialize_one(article),
+        is_admin = auth:is_signedin(),
       }})
     else
       return view.render("not_found.html.elua", {status = 404})

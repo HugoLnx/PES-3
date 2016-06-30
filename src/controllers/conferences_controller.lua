@@ -70,6 +70,7 @@ M.metatable = {
 
   show = function(self, params)
     local conference = self.dao:find(params.id)
+    local auth = Authentication:new(params.cookie)
     local articles = self.articleDao:all_on_conference(conference.id)
     conference.articles = articles
 
@@ -77,6 +78,7 @@ M.metatable = {
       return view.render("conference.html.elua", {args = {
         conference = ConferenceSerializer:serialize_one(conference),
         articles = ArticleSerializer:serialize_many(articles),
+        is_admin = auth:is_signedin(),
       }})
     else
       return view.render("not_found.html.elua", {status = 404})

@@ -25,6 +25,10 @@
 
 <body>
 
+{% if is_admin then %}
+  <p>Você está logado como administrador, deseja <a href="/logout">Sair</a>?</p>
+{% end %}
+  
 {*view*}
 
 <script src="/public/js/jquery.min.js"></script>
