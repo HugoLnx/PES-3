@@ -220,7 +220,7 @@ M.metatable = {
   Responsabilidade: Função privada | Converte a lista de autores de um artigo é uma string contendo todos os autores (usado para busca)
   Pré-Condição: * Banco de dados deve estar online
                 * Deve receber o artigo contendo os autores
-  Pós-Condição: * Retorna uma string contendo todos os autores contatenados por espaço
+  Pós-Condição: * Retorna uma string contendo todos os autores concatenados por espaço
   ]]
   __extra_data_for = function(self, article)
     return {authors_text = table.concat(article.authors, " ")}
