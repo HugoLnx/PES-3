@@ -4,9 +4,9 @@ modulo responsible for being the conference articles
 it has the functions:
 index: Index a conference
 create: create a conference
-update: updates a conferencia
-destroy: Delete a conferencia
-show: shows a conferencia
+update: updates a conference
+destroy: Delete a conference
+show: shows a conference
 
 ]]
 
@@ -31,6 +31,12 @@ local M = {
 }
 
 M.metatable = {
+
+  --[[
+  Responsabilidade: Método para a rota principal da página de artigos
+  Pré-Condição: * Deve receber parametros da rota
+  Pós-Condição: * Retorna a página html renderizada contendo os artigos e se o usuário é admin ou não
+  ]]
   index = function(self, params)
     local articles = self.dao:all(params.query)
     local conferences = self.conferenceDao:all()
@@ -44,8 +50,13 @@ M.metatable = {
     }})
   end,
 
+  --[[
+  Responsabilidade: Método para a rota de criação de artigo
+  Pré-Condição: * Deve receber parametros da rota (dados de artigo)
+  Pós-Condição: * Cria artigo
+                * Retorna a página html contendo os artigos, incluindo o novo
+  ]]
   create = function(self, params)
-
     params.authors = utils.split(params.authors, "[^,]+")
 
     local article = Article:new(params)
@@ -54,6 +65,12 @@ M.metatable = {
     return view.redirect_to("/articles.html")
   end,
 
+  --[[
+  Responsabilidade: Método para a rota de download de documento associado ao artigo
+  Pré-Condição: * Deve receber parametros da rota (id do artigo)
+  Pós-Condição: * Obtem o caminho do arquivo
+                * Retorna resposta contendo o arquivo associado ao artigo
+  ]]
   download = function(self, params)
     local article, file = self.dao:download(params.id)
 
@@ -77,6 +94,12 @@ M.metatable = {
     end
   end,
 
+  --[[
+  Responsabilidade: Método para a rota de atualização de artigo
+  Pré-Condição: * Deve receber parametros da rota (dados de artigo a serem atualiados)
+  Pós-Condição: * Atualiza artigo
+                * Retorna a página html contendo os artigos, incluindo artigo com os dados atualizados
+  ]]
   update = function(self, params)
     local article = self.dao:update(Article:new(params), params.document)
     if article then
@@ -86,6 +109,12 @@ M.metatable = {
     end
   end,
 
+  --[[
+  Responsabilidade: Método para a rota de remoção de artigo
+  Pré-Condição: * Deve receber parametros da rota (id do artigo)
+  Pós-Condição: * Remove artigo
+                * Retorna a página html contendo as artigos
+  ]]
   destroy = function(self, params)
     if self.dao:delete(params.id) then
       return view.redirect_to("/articles.html")
@@ -94,6 +123,11 @@ M.metatable = {
     end
   end,
 
+  --[[
+  Responsabilidade: Método para a rota de exibição uma de artigo específico
+  Pré-Condição: * Deve receber parametros da rota (id da artigo)
+  Pós-Condição: * Retorna a página html contendo as informações do artigo especificado
+  ]]
   show = function(self, params)
     local article = self.dao:find(params.id)
     local auth = Authentication:new(params.cookie)
@@ -110,4 +144,3 @@ M.metatable = {
 }
 
 return M
-  

@@ -66,7 +66,7 @@ M.metatable = {
   Responsabilidade: Método para a rota de atualização de conferência
   Pré-Condição: * Deve receber parametros da rota (dados de conferências a serem atualiados)
   Pós-Condição: * Atualiza conferência
-                * Retorna a página html contendo as conferências, incluindo conferências com os dados atualizados
+                * Retorna a página html contendo as conferências, incluindo conferência com os dados atualizados
   ]]
   update = function(self, params)
     local conference = self.dao:update(Conference:new(params))
