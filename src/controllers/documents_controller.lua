@@ -10,6 +10,11 @@ local M = {
 }
 
 M.metatable = {
+  --[[
+  Responsabilidade: Método para a rota que recebe o pdf e retorna o texto contido nele
+  Pré-Condição: * Deve receber parametros da rota (contendo o caminho do pdf)
+  Pós-Condição: * Retorna um json contendo o texto do pdf
+  ]]
   read = function(self, params)
     local text = DocumentParser:get_text(params.document.path)
 
