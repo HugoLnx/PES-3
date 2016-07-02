@@ -225,4 +225,4 @@ Os arquivos desse diretório estão cada um com seu cabeçalho. Como eles não e
 * Cronograma atualizado para a versão final. (Bernardo)
 
 ### 02/07
-* Aplicação da regra 2 de disciplina aos arquivos da pasta models e controllers (Robert)
+* Aplicação da regra 2 de disciplina aos arquivos da pasta models, controllers e lib (Robert)
