@@ -1,3 +1,11 @@
+--[[
+Módulo responsável por ser o controlador das rotas documentos
+
+Possui as seguintes funções:
+read: lê o conteúdo de um pdf e retorna as informações em json
+
+]]
+
 local DocumentParser = require('models/document_parser')
 local view = require('view')
 

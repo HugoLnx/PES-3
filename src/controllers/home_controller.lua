@@ -1,8 +1,11 @@
---[[  home_controller Modulo
-this is the modulo responsible for being the controller of the home page
+--[[
+Módulo responsável por ser o controlador da rota principal (raiz)
 
-this modulo creates the DAO of the articles and conference and serializes them
+Possui as seguintes funções:
+home: instancia os DAOs de artigos e conferências e exibe retorna uma página exibindo ambos
+
 ]]
+
 local ArticleDao = require('models/article_dao')
 local Article = require('models/article')
 local ArticleSerializer = require('models/article_serializer')

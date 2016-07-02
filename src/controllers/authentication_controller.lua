@@ -1,3 +1,13 @@
+--[[
+Módulo responsável por ser o controlador das rotas autenticação de usuário
+
+Possui as seguintes funções:
+
+login: exibe página de login
+authenticate: verifica se a senha de usuário é válida
+logout: efetua o logout do usuário
+]]
+
 local view = require('view')
 local Authentication = require('models/authentication')
 

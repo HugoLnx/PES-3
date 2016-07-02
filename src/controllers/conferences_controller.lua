@@ -1,13 +1,12 @@
---[[  conferences_controller Módulo
-modulo responsible for being the conference controller
+--[[
+Módulo responsável por ser o controlador das rotas conferências
 
-it has the functions:
-index: Indexa a conferência
-create: Cria uma conferência
-update: Atualiza uma conferência
-destroy: Deleta uma conferência
-show: Mostra uma conferência
-
+Possui as seguintes funções:
+index: lista as conferências
+create: cria uma conferência
+update: atualiza uma conferência
+destroy: deleta uma conferência
+show: Mostra informações de uma conferência específica
 ]]
 
 local ConferenceDao = require('models/conference_dao')

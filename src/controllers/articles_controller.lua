@@ -1,13 +1,14 @@
---[[  articles_controller Módulo
-modulo responsible for being the conference articles
+--[[
+Módulo responsável por ser o controlador das rotas de artigo
 
-it has the functions:
-index: Index a conference
-create: create a conference
-update: updates a conference
-destroy: Delete a conference
-show: shows a conference
+Possui as seguintes funções:
 
+index: lista de artigos
+create: cria um artigos
+update: atualiza um artigos
+download: efetua o download de um pdf associado ao artigo
+destroy: remove um artigo
+show: exibe informações de um artigo específico
 ]]
 
 local ArticleDao = require('models/article_dao')
