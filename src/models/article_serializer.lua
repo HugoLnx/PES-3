@@ -12,7 +12,7 @@ Pós-Condição: * Caminho do download é fornecido
               * Autores são convertidos em uma string onde são separados por vírgula
               * caminho do html é formado usando o id do artigo
               * Conferencia é adicionada ao objeto
-              * Retona o objeto
+              * Retorna o objeto
 ]]
 local function data_for(article)
   local data = utils.merge(article:data(), {
