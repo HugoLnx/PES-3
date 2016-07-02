@@ -1,5 +1,5 @@
---[[conference serializer modulos
-This modulo has the functions about the conference serializer
+--[[
+Módulo responsável por serializar um artigo (converter uma conferência em "dto" de conferência e vice-versa)
 ]]
 local utils = require "utils"
 

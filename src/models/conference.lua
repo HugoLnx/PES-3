@@ -1,5 +1,5 @@
---[[conference Modulo
-This modulo is responsible to play the role of model in MVC design pattern.
+--[[
+Módulo responsável representar o conferência (model) do padrão de design MVC
 ]]
 local utils = require "utils"
 local path = require "pl.path"

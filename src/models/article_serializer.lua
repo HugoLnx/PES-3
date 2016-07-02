@@ -1,5 +1,5 @@
---[[article serializer modulos
-This modulo has the functions about the article serializer
+--[[
+Módulo responsável por serializar um artigo (converter um artigo em "dto" de artigo e vice-versa)
 ]]
 local utils = require "utils"
 local ConferenceSerializer = require "models/conference_serializer"

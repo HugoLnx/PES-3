@@ -1,3 +1,14 @@
+--[[
+Módulo responsável autenticar um usuárelacionado
+
+Possui as seguintes funções:
+
+login: efetua o login
+logout: efetua o logout
+is_signedin: verifica se usuário está logado
+
+]]
+
 local M = {
   new = function(self, cookie)
     local obj = {cookie = cookie}

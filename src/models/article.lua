@@ -1,5 +1,5 @@
---[[article Modulo
-This modulo is responsible to play the role of model in MVC design pattern.
+--[[
+Módulo responsável representar o artigo (model) do padrão de design MVC
 ]]
 
 local utils = require "utils"

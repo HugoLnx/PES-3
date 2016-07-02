@@ -1,3 +1,6 @@
+--[[
+Módulo responsável por converter o pdf em texto
+]]
 return {
   --[[
   Responsabilidade: Retorna o texto de um pdf

@@ -1,6 +1,17 @@
---[[article DAO modulos
-This modulo has the functions about the article DAO's(Data acess Object)
+--[[
+Módulo responsável por ser o DAO (Data acess Object) de artigos
+
+Possui as seguintes funções públicas:
+insert: insere um artigo no banco de dados
+all_on_conference: obtem todos os artigos de uma conferência
+all: obtem todos os artigos
+find: busca um artigo
+delete: remove um artigo do banco de dados
+update: atualiza um artigo no banco de dados
+download: incrementa contador de download de artigo
+
 ]]
+
 local Article = require "models/article"
 local DocumentParser = require "models/document_parser"
 local utils = require "utils"

@@ -1,6 +1,15 @@
---[[conference DAO modulos
-This modulo has the functions about the conference DAO's(Data acess Object)
+--[[
+Módulo responsável por ser o DAO (Data acess Object) de conferências
+
+Possui as seguintes funções públicas:
+insert: insere uma conferências no banco de dados
+all: obtem todos as conferências
+find: busca uma conferência
+delete: remove uma conferência do banco de dados
+update: atualiza uma conferência no banco de dados
+
 ]]
+
 local Conference = require "models/conference"
 local utils = require "utils"
 local app = require "app"
