@@ -25,6 +25,11 @@ local M = {
 }
 
 M.metatable = {
+  --[[
+  Responsabilidade: Método para a rota principal do site (exibe conferências e artigos)
+  Pré-Condição: * Deve receber parametros da rota
+  Pós-Condição: * Retorna a página html renderizada
+  ]]
   home = function(self, params)
     local articles = self.article_dao:all()
     local conferences = self.conference_dao:all()
