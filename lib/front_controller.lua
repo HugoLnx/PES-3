@@ -1,3 +1,7 @@
+--[[
+Módulo responsável por ser o controller de entrada do servidor de aplicação. Ele delega funções para os demais controllers
+]]
+
 local cjson = require "cjson"
 local utils = require "utils"
 local multipart = require "multipart"
@@ -17,18 +21,18 @@ M.metatable = {
     local controller = require("controllers/" .. calling.controller .. "_controller"):new(self.connection)
     local action = calling.action
     local path_args = calling.path_args
-    local args = self:__get_args(path_args) 
+    local args = self:__get_args(path_args)
     local ck = require "resty.cookie"
     args.cookie, err = ck:new()
-    
-    local output = controller[action](controller, args) 
+
+    local output = controller[action](controller, args)
     if output.redirect_to then
       self:__respond_redirect(output.redirect_to)
     else
       self:__respond_with(output)
     end
   end,
-  
+
   __get_args = function(self, path_args)
     local path_args = path_args or {}
     local args = {}
@@ -57,14 +61,14 @@ M.metatable = {
     end
     return args
   end,
-  
+
   __respond_redirect = function(self, path)
     ngx.redirect(path)
   end,
-  
+
   __respond_with = function(self, output)
     local headers = utils.merge(DEFAULT_HEADERS, (output.headers or {}))
-    
+
     for header,value in pairs(headers) do
       ngx.header[header] = value
     end
