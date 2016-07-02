@@ -31,6 +31,11 @@ local M = {
 }
 
 M.metatable = {
+  --[[
+  Responsabilidade: Método para a rota principal da página de conferência
+  Pré-Condição: * Deve receber parametros da rota
+  Pós-Condição: * Retorna a página html renderizada contendo as conferências e se o usuário é admin ou não
+  ]]
   index = function(self, params)
     local conferences = self.dao:all(params.query)
     local auth = Authentication:new(params.cookie)
@@ -42,6 +47,12 @@ M.metatable = {
     }})
   end,
 
+  --[[
+  Responsabilidade: Método para a rota de criação de conferência
+  Pré-Condição: * Deve receber parametros da rota (dados de conferências)
+  Pós-Condição: * Cria conferência
+                * Retorna a página html contendo as conferências, incluindo a nova
+  ]]
   create = function(self, params)
     params.editors = utils.split(params.editors, "[^,]+")
 
@@ -51,6 +62,12 @@ M.metatable = {
     return view.redirect_to("/conferences.html")
   end,
 
+  --[[
+  Responsabilidade: Método para a rota de atualização de conferência
+  Pré-Condição: * Deve receber parametros da rota (dados de conferências a serem atualiados)
+  Pós-Condição: * Atualiza conferência
+                * Retorna a página html contendo as conferências, incluindo conferências com os dados atualizados
+  ]]
   update = function(self, params)
     local conference = self.dao:update(Conference:new(params))
     if conference then
@@ -60,6 +77,12 @@ M.metatable = {
     end
   end,
 
+  --[[
+  Responsabilidade: Método para a rota de remoção de conferência
+  Pré-Condição: * Deve receber parametros da rota (id da conferência)
+  Pós-Condição: * Remove conferência
+                * Retorna a página html contendo as conferências
+  ]]
   destroy = function(self, params)
     if self.dao:delete(params.id) then
       return view.redirect_to("/conferences.html")
@@ -68,6 +91,11 @@ M.metatable = {
     end
   end,
 
+  --[[
+  Responsabilidade: Método para a rota de exibição uma de conferência específica
+  Pré-Condição: * Deve receber parametros da rota (id da conferência)
+  Pós-Condição: * Retorna a página html contendo as informações da conferência especificada
+  ]]
   show = function(self, params)
     local conference = self.dao:find(params.id)
     local auth = Authentication:new(params.cookie)
