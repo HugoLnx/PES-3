@@ -1,8 +1,8 @@
 # PES-3 - README
-* Autoria: Bernardo, Hugo, Guilherme, Lucas e Pedro
+* Autoria: Bernardo, Hugo, Guilherme, Lucas, Robert e Pedro
 * Data: 30/06
 * Versão: 16
-* Tamanho: 225 linhas
+* Tamanho: 229 linhas
 
 ## Para uso da equipe
 ### Configurando ambiente
