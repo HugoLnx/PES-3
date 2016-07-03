@@ -1,14 +1,14 @@
 # Diagramas
 
-## DFD
+## DFD (DFD.pdf)
 
 Um PDF contendo os principais fluxos de dados do sistema.
 
-## Diagrama de pacotes
+## Diagrama de pacotes (Arquitetura.asta)
 
 Diagrama de pacotes contendo uma visão geral da arquitetura do sistema.
 
-## Diagramas de sequência para as seguintes operações
+## Diagramas de sequência para as seguintes operações (Arquitetura.asta)
 
 ## Artigos
 
