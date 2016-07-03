@@ -10,7 +10,7 @@ Diagrama de pacotes contendo uma visão geral da arquitetura do sistema.
 
 ## Diagramas de sequência para as seguintes operações (Arquitetura.asta)
 
-## Artigos
+### Artigos
 
 * Listar artigos
 * Criar artigo
@@ -19,7 +19,7 @@ Diagrama de pacotes contendo uma visão geral da arquitetura do sistema.
 * Apagar artigo
 * Efetuar download de um artigo
 
-## Conferências
+### Conferências
 
 * Listar conferências
 * Criar conferência
@@ -27,7 +27,7 @@ Diagrama de pacotes contendo uma visão geral da arquitetura do sistema.
 * Atualizar conferências
 * Apagar conferências
 
-## Autenticação
+### Autenticação
 
 * Acesso a pagina de login
 * Autenticação de usuário
