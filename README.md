@@ -226,3 +226,4 @@ Os arquivos desse diretório estão cada um com seu cabeçalho. Como eles não e
 
 ### 02/07
 * Aplicação da regra 2 de disciplina aos arquivos da pasta models, controllers e lib (Robert)
+* Inclusão de diagramas de sequência para as operações de conferência e autenticação. (Robert)
